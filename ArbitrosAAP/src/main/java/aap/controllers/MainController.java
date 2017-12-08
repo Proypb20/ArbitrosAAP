@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.ServletConfig;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,7 +18,7 @@ import aap.servicio.Service;
 public class MainController {
 	
 	public MainController(){}
-	
+	@Autowired
 	public Service service;
 	
 	public void init(ServletConfig config) {
@@ -51,9 +52,9 @@ public class MainController {
 	@RequestMapping("CrearEvento.html")
 	public ModelAndView redireccionev(){
 		ModelAndView MV = new ModelAndView();
-		MV.addObject("command", new Torneos());
+		MV.addObject("command", new Eventos());
 		List<Torneos> torneos = service.obtenerTorneos();
-		MV.addObject("TorneoList", torneos); 
+		MV.addObject("TorneoList", torneos);
 		MV.setViewName("crearevento");
 		return MV;
 	}

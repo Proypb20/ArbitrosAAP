@@ -59,7 +59,7 @@ public class DataAccessHibernateTemplate implements DataAccess {
 	@Transactional(propagation=Propagation.REQUIRED, readOnly=true)
 	public ArrayList<Usuarios> obtenerArbitros() {
 		DetachedCriteria criteria = DetachedCriteria.forClass(Usuarios.class);
-		criteria.add(Restrictions.isNotEmpty("idArbitro"));
+		criteria.add(Restrictions.isNotNull("arbitro"));
 		return (ArrayList<Usuarios>) this.hibernateTemplate.findByCriteria(criteria);
 	}
 

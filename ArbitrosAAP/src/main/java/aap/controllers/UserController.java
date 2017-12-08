@@ -89,7 +89,7 @@ public class UserController {
 	}
 	
 	@RequestMapping(value ="/ActualizarUsuario" , method= {RequestMethod.POST})
-	public ModelAndView ActualizarUsuario(@ModelAttribute("usuariom") Usuarios user,
+	public ModelAndView ActualizarUsuario(Usuarios user,
 			       @RequestParam(value="arbitra", required=false) String arbitra,
 			       HttpServletRequest request)
 	{

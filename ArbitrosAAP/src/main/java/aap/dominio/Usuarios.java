@@ -106,7 +106,7 @@ public class Usuarios implements Serializable{
 	public Usuarios()
     {
     	estado = "A";
-//		fechaCreado = Otros.GetSysdate();
+		fechaCreado = Otros.GetSysdate();
     }
 	@Autowired
 	public int getIdUsuario() {
