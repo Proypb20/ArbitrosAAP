@@ -48,10 +48,14 @@ public class DataAccessHibernateTemplate implements DataAccess {
 		return this.hibernateTemplate.get(Usuarios.class,IdU);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional(propagation=Propagation.REQUIRED, readOnly=true)
 	public ArrayList<Usuarios> obtenerUsuarios() {
-		return (ArrayList<Usuarios>) this.hibernateTemplate.loadAll(Usuarios.class);
+		DetachedCriteria criteria = DetachedCriteria.forClass(Usuarios.class);
+		criteria.add(Restrictions.eq("estado", "A"));
+		return (ArrayList<Usuarios>) this.hibernateTemplate.findByCriteria(criteria);
+		
 		/*Filtrar por Activos*/
 	}
 	
