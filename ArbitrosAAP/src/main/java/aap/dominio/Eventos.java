@@ -62,16 +62,16 @@ public class Eventos implements Serializable{
     
     @Autowired
     @OneToMany (mappedBy = "evento", fetch= FetchType.LAZY) 
-    private List<Honorarios> honorario = new ArrayList<>();
+    private List<Presupuestos> presupuesto = new ArrayList<>();
     
     @Autowired
-	public List<Honorarios> getHonorario() {
-		return honorario;
+	public List<Presupuestos> getHonorario() {
+		return presupuesto;
 	}
 
     @Autowired
-	public void setHonorario(List<Honorarios> honorario) {
-		this.honorario = honorario;
+	public void setHonorario(List<Presupuestos> presupuesto) {
+		this.presupuesto = presupuesto;
 	}
 
     @Autowired

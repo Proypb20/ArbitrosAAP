@@ -52,6 +52,13 @@ private static final long serialVersionUID = 1L;
 	private List<Eventos> evento = new ArrayList<>();
     
 	@Autowired
+	public Torneos ()
+	{
+		estado = "A";
+		fechaCreado = Otros.GetSysdate();
+	}
+	
+	@Autowired
 	public Integer getIdTorneo() {
 		return idTorneo;
 	}

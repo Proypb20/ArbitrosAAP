@@ -55,11 +55,20 @@ public class Arbitros implements Serializable{
     
     @Autowired
     @OneToMany (mappedBy = "arbitro", fetch= FetchType.LAZY, cascade = CascadeType.ALL) 
-    private List<Honorarios> honorario = new ArrayList<>();
+    private List<Presupuestos> presupuesto = new ArrayList<>();
+    
     @Autowired
     public Categorias getCategoria() {
 		return categoria;
 	}
+    
+    @Autowired
+	public Arbitros ()
+    {
+    	fechaAlta = Otros.GetSysdate();
+		fechaCreado = Otros.GetSysdate();
+    }
+    
     @Autowired
 	public void setCategoria(Categorias categoria) {
 		this.categoria = categoria;
@@ -125,11 +134,11 @@ public class Arbitros implements Serializable{
 		this.usuario = usuario;
 	}
 	@Autowired
-	public List<Honorarios> getHonorario() {
-		return honorario;
+	public List<Presupuestos> getHonorario() {
+		return presupuesto;
 	}
 	@Autowired
-	public void setHonorario(List<Honorarios> honorario) {
-		this.honorario = honorario;
+	public void setHonorario(List<Presupuestos> presupuesto) {
+		this.presupuesto = presupuesto;
 	}
 }

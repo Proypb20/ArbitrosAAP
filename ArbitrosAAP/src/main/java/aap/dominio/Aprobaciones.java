@@ -34,8 +34,8 @@ public class Aprobaciones implements Serializable{
 	private Usuarios usuario;
 	@Autowired
     @ManyToOne(fetch= FetchType.LAZY)
-	@JoinColumn(name="idHonorario") 
-	private Honorarios honorario;
+	@JoinColumn(name="idPresupuesto") 
+	private Presupuestos presupuesto;
 	@Autowired
     @ManyToOne(fetch= FetchType.LAZY)
 	@JoinColumn(name="idArbitro") 
@@ -85,12 +85,12 @@ public class Aprobaciones implements Serializable{
 		this.usuario = usuario;
 	}
 	@Autowired
-	public Honorarios getHonorario() {
-		return honorario;
+	public Presupuestos getHonorario() {
+		return presupuesto;
 	}
 	@Autowired
-	public void setHonorario(Honorarios honorario) {
-		this.honorario = honorario;
+	public void setHonorario(Presupuestos presupuesto) {
+		this.presupuesto = presupuesto;
 	}
 	@Autowired
 	public Arbitros getArbitro() {

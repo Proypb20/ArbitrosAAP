@@ -61,6 +61,12 @@ public class TiposUsuario implements Serializable{
 	}
 	
 	@Autowired
+	public TiposUsuario ()
+	{
+		fechaCreado = Otros.GetSysdate();
+	}
+	
+	@Autowired
 	public void setArbitra(String arbitra) {
 		this.arbitra = arbitra;
 	}

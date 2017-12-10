@@ -20,9 +20,9 @@ import org.hibernate.annotations.Proxy;
 import org.springframework.beans.factory.annotation.Autowired;
 
 @Entity
-@Table(name="Honorarios")
+@Table(name="Presupuestos")
 @Proxy(lazy =false)
-public class Honorarios implements Serializable{
+public class Presupuestos implements Serializable{
 
 	@Autowired
 	private static final long serialVersionUID = 1L;
@@ -31,8 +31,8 @@ public class Honorarios implements Serializable{
 	@GeneratedValue(generator="increment")
     @GenericGenerator(name="increment", strategy = "increment")
 	@Autowired
-	@Column( name = "idHonorario",nullable=false)
-	private int idHonorario;
+	@Column( name = "idPresupuesto",nullable=false)
+	private int idPresupuesto;
 	
 	@Autowired
 	@Column( name = "dia")
@@ -69,17 +69,24 @@ public class Honorarios implements Serializable{
     private Arbitros arbitro;
     
     @Autowired
-    @OneToMany (mappedBy = "honorario", fetch= FetchType.LAZY) 
+    @OneToMany (mappedBy = "presupuesto", fetch= FetchType.LAZY) 
     private List<Aprobaciones> aprobacion = new ArrayList<>();
     
     @Autowired
-	public int getIdHonorario() {
-		return idHonorario;
+	public Presupuestos ()
+	{
+    	estado = "N";
+    	fechaCreado = Otros.GetSysdate();
+	}
+    
+    @Autowired
+	public int getIdPresupuesto() {
+		return idPresupuesto;
 	}
 
     @Autowired
-	public void setIdHonorario(int idHonorario) {
-		this.idHonorario = idHonorario;
+	public void setIdPresupuesto(int idPresupuesto) {
+		this.idPresupuesto = idPresupuesto;
 	}
 
     @Autowired

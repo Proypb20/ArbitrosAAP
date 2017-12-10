@@ -81,7 +81,11 @@ public class MainController {
 	@RequestMapping("Inscribirse.html")
 	public ModelAndView redireccionins(){
 		ModelAndView MV = new ModelAndView();
-		MV.addObject("command",new Honorarios());
+		List<Torneos> torneo = service.obtenerTorneos();
+		MV.addObject("TorneoList", torneo);
+		List<Eventos> evento = service.obtenerEventos();
+		MV.addObject("EventoList", evento);
+		MV.addObject("command",new Presupuestos());
 		MV.setViewName("inscripcion");
 		return MV;
 	}
