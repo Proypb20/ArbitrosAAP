@@ -36,7 +36,7 @@ public class Categorias implements Serializable{
 	private Date  fechaCreado;
 	
 	@Autowired
-    @OneToMany( mappedBy = "categoria", fetch= FetchType.LAZY) 
+    @OneToMany( mappedBy = "categoria", fetch= FetchType.EAGER) 
 	private List<Arbitros> arbitro = new ArrayList<>();
 	
 	@Autowired

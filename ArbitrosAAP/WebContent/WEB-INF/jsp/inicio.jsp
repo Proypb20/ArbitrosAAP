@@ -40,5 +40,6 @@
         <br />
     </c:otherwise>
 </c:choose>
+${Mensaje}
 </body>
 </html>

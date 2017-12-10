@@ -30,7 +30,7 @@ public class ArbitrosController {
 		this.service = (Service) ctx.getBean("serviceBean");
 	}
 
-	@RequestMapping("/ListarArbitros.html")
+	@RequestMapping("/listarArbitros.html")
 	public ModelAndView ListarArbitros(){
 
 		ModelAndView MV = new ModelAndView();

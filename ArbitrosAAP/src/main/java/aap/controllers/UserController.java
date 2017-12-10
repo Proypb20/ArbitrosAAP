@@ -60,7 +60,7 @@ public class UserController {
 		String nombre = "";
 		try
 		{
-		Usuarios usuario = service.LoginUsuario("from Usuarios where usuario = '"+user.getUsuario()+"' and contrasena = '"+user.getContrasena()+"'");
+		Usuarios usuario = service.LoginUsuario("from Usuarios where usuario = '"+user.getUsuario()+"' and contrasena = '"+user.getContrasena()+"' and estado = 'A'");
 		
 		if ( usuario != null)
 		{

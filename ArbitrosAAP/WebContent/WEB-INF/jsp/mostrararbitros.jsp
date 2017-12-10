@@ -13,24 +13,31 @@ Arbitros:
 		<thead>
 			<tr>
 				<th>Apellido y Nombre</th>
+				<th>Nro Arbitro</th>
+				<th>Localidad</th>
+				<th>Provincia</th>
 				<th>Categoria</th>
 			</tr>
 		</thead>
 		
-			<c:forEach items="${arbitrolist}" var="arbitros">
+			<c:forEach items="${arbitrolist}" var="arbitro">
 				
 				<tr>
 				
-				<td>${arbitros.apellido}, ${arbitros.nombre}</td>
-				<td>${arbitros.categoria}</td>
-				
+				<td>${arbitro.apellido}, ${arbitro.nombre}</td>
+				<td>${arbitro.arbitro.nroArbitro}</td>
+				<td>${arbitro.localidad}</td>
+				<td>${arbitro.provincia}</td>
+				<c:if test="${empty arbitro.arbitro.categoria.nombre}">
+				<td>No Categorizado</td>
+				</c:if>
+				<c:if test="${not empty arbitro.arbitro.categoria.nombre}">
+				<td>${arbitro.arbitro.categoria.nombre}</td>
+				</c:if>
 				</tr>
 				
 			</c:forEach>
-	
-	<tr>
-	<td> <input type="button" value="Cancelar"  onclick="javascript:history.go(-1)"> </td>
-	</tr>
-	</table>
+    </table>
+	<input type="button" value="Volver"  onclick="javascript:history.go(-1)"> 
 </body>
 </html>

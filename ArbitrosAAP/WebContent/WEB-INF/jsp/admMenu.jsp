@@ -5,7 +5,7 @@
  		<a href="CrearEvento.html">Crear Eventos</a><a>-</a>
  		<a href="CrearCategorias.html">Crear Categorias</a><a>-</a>
  		<a href="ModifCategorias.html">Modif Categorias</a><a>-</a>
- 		<a href="CrearTUsuarios.html">Crear Tipo Usuarios</a><a>-</a>
+ 		<a href="CrearTiposUsuario.html">Crear Tipo Usuarios</a><a>-</a>
  		<a href="Modusuario.html">Mi Perfil</a><a>-</a>
 		<a href="index.html">Cerrar Sesion</a>
 </div>

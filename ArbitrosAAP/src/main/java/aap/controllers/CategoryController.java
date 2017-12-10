@@ -71,15 +71,16 @@ public class CategoryController {
 		MV.setViewName("inicio");
 	    return MV;
 	}
-	@RequestMapping( value="asignarcategorias.html")
+	@RequestMapping( value="AsignarCategorias.html")
 	public ModelAndView AsignarCategorias(HttpServletRequest request)
 	{
 		ModelAndView MV = new ModelAndView();
-		List<Usuarios> usuario = service.obtenerUsuarios();
+		MV.addObject("command",new Usuarios());
+		List<Usuarios> usuario = service.obtenerArbitros();
 		List<Categorias> categoria = service.obtenerCategorias();
-		MV.addObject("usuariom", usuario); 
-		MV.addObject("categoriam", categoria);
-		MV.setViewName("modificarcategoria");
+		MV.addObject("UsuarioList", usuario); 
+		MV.addObject("CategoriaList", categoria);
+		MV.setViewName("asignarcategoria");
 		return MV;
 	}
 	@RequestMapping(value ="/GuardarCategoria" , method= {RequestMethod.POST})
@@ -90,6 +91,19 @@ public class CategoryController {
 		categoria.setidCreado((Integer) session.getAttribute("IdU"));
 		service.insertarCategoria(categoria);
 		MV.addObject("Mensaje", "Categoria Guardada Exitosamente");
+		MV.setViewName("inicio");
+		return MV;
+	}
+	
+	@RequestMapping(value="/AsignaCategUsuario" ,method= {RequestMethod.POST})
+	public ModelAndView AsignaCategUsuario(Usuarios usuario)
+	{
+		ModelAndView MV = new ModelAndView();
+		Usuarios usuario2 = service.obtenerUsuario(usuario.getIdUsuario());
+		Categorias categoria = service.obtenerCategoria(usuario.getArbitro().getCategoria().getIdCategoria());
+		usuario2.getArbitro().setCategoria(categoria);
+		service.actualizarUsuario(usuario2);
+		MV.addObject("Mensaje", "Categoria Asignada Exitosamente");
 		MV.setViewName("inicio");
 		return MV;
 	}

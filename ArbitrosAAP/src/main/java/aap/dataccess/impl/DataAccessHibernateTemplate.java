@@ -65,6 +65,7 @@ public class DataAccessHibernateTemplate implements DataAccess {
 	public ArrayList<Usuarios> obtenerArbitros() {
 		DetachedCriteria criteria = DetachedCriteria.forClass(Usuarios.class);
 		criteria.add(Restrictions.isNotNull("arbitro"));
+		criteria.add(Restrictions.eq("estado", "A"));
 		return (ArrayList<Usuarios>) this.hibernateTemplate.findByCriteria(criteria);
 	}
 

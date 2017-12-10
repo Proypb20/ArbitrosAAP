@@ -45,7 +45,7 @@ public class Arbitros implements Serializable{
   	private Usuarios usuario;
 	
     @Autowired
-    @ManyToOne( fetch = FetchType.LAZY)
+    @ManyToOne( fetch = FetchType.EAGER)
 	@JoinColumn (name="idCategoria")
 	private Categorias categoria;
     

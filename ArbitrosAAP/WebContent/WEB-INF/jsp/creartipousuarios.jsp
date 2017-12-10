@@ -17,7 +17,10 @@
 			</tr>
 			<tr>
 					<td align="left">Arbitra</td>
-			    	<td><frm:input type="checkbox" name="arbitra" value="Y" Checked path="arbitra"/></td>
+					<td><frm:select name="arbitra" class="form-control" style="width: 175px;" path="arbitra">
+						<option selected="selected" value="Y">SI</option>
+						<option value="N">NO</option>
+					</frm:select></td>
 			</tr>
 			<tr>
 				<td><input type="submit" value="Guardar" name="btnguardar"></td>

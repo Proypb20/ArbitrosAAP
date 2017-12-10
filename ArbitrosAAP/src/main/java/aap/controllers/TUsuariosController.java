@@ -45,7 +45,7 @@ public class TUsuariosController {
 		HttpSession session = request.getSession();
 		tipousuario.setidCreado((Integer) session.getAttribute("IdU"));
 		service.insertarTiposUsuario(tipousuario);
-		MV.addObject("Mensaje", "Categoria Guardada Exitosamente");
+		MV.addObject("Mensaje", "Tipo de Usuario Guardado Exitosamente");
 		MV.setViewName("inicio");
 		return MV;
 	}
