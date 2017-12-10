@@ -39,8 +39,10 @@
 				</tr>
 				
 			</c:forEach>
-	</table>
+			<tr>
 	<td> </td>
 	<td><input type="button" value="Volver"  onclick="javascript:history.go(-1)"> </td>
+	</tr>
+	</table>
 </body>
 </html>

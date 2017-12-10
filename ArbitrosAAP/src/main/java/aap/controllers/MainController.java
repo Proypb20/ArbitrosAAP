@@ -42,6 +42,15 @@ public class MainController {
 		MV.setViewName("crearuser");
 		return MV;
 	}
+	@RequestMapping("EliminarUsuarios.html")
+	public ModelAndView redireccioneus(){
+		ModelAndView MV = new ModelAndView();
+		MV.addObject("command", new Usuarios());
+		List<Usuarios> usuario = service.obtenerUsuarios();
+		MV.addObject("UsuarioList", usuario);
+		MV.setViewName("eliminaruser");
+		return MV;
+	}
 	@RequestMapping("CrearTorneo.html")
 	public ModelAndView redirecciontor(){
 		ModelAndView MV = new ModelAndView();

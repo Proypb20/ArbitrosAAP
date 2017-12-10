@@ -41,7 +41,7 @@
 				<value>aap.dominio.Eventos</value>
 				<value>aap.dominio.TiposUsuario</value>
 				<value>aap.dominio.Categorias</value>
-				<value>aap.dominio.Honorarios</value>
+				<value>aap.dominio.Presupuestos</value>
 				<value>aap.dominio.Aprobaciones</value>
 				
 			</list>

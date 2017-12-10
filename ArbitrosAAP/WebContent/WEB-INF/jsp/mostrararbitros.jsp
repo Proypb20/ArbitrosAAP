@@ -28,7 +28,9 @@ Arbitros:
 				
 			</c:forEach>
 	
-	</table>
+	<tr>
 	<td> <input type="button" value="Cancelar"  onclick="javascript:history.go(-1)"> </td>
+	</tr>
+	</table>
 </body>
 </html>

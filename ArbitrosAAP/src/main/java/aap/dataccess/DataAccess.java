@@ -22,6 +22,8 @@ public interface DataAccess {
 
 	public void actualizarUsuario(Usuarios usuario);
 	
+	public void inactivarUsuario(Usuarios usuario);
+	
     /**/
 	
 	ArrayList<Eventos> obtenerEventos();

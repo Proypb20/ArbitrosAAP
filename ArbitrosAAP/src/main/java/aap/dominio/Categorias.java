@@ -30,9 +30,6 @@ public class Categorias implements Serializable{
 	@Column( name = "estado")
 	private String estado;
 	@Autowired
-	@Column( name = "idCreado")
-	private Integer idCreado;
-	@Autowired
     @Column( name = "fechaCreado")
 	private Date  fechaCreado;
 	@Autowired
@@ -69,14 +66,6 @@ public class Categorias implements Serializable{
 	@Autowired
 	public void setEstado(String estado) {
 		this.estado = estado;
-	}
-	@Autowired
-	public Integer getIdCreado() {
-		return idCreado;
-	}
-	@Autowired
-	public void setIdCreado(Integer idCreado) {
-		this.idCreado = idCreado;
 	}
 	@Autowired
 	public Date getFechaCreado() {

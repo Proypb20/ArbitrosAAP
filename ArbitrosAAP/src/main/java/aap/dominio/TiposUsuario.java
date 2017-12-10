@@ -39,10 +39,6 @@ public class TiposUsuario implements Serializable{
 	private String arbitra;
 	
 	@Autowired
-	@Column( name = "idCreado")
-	private Integer idCreado;
-	
-	@Autowired
     @Column( name = "fechaCreado")
 	private Date  fechaCreado;
 	
@@ -94,16 +90,6 @@ public class TiposUsuario implements Serializable{
 	@Autowired
 	public String getArbitra() {
 		return arbitra;
-	}
-	
-	@Autowired
-	public Integer getIdCreado() {
-		return idCreado;
-	}
-	
-	@Autowired
-	public void setIdCreado(Integer idCreado) {
-		this.idCreado = idCreado;
 	}
 	
 	@Autowired

@@ -23,9 +23,6 @@ public class Aprobaciones implements Serializable{
 	@Column( name = "estado")
 	private String estado;
 	@Autowired
-	@Column( name = "idCreado")
-	private Integer idCreado;
-	@Autowired
     @Column( name = "fechaCreado")
 	private Date  fechaCreado;
 	@Autowired
@@ -57,14 +54,6 @@ public class Aprobaciones implements Serializable{
 		this.estado = estado;
 	}
 	@Autowired
-	public Integer getIdCreado() {
-		return idCreado;
-	}
-	@Autowired
-	public void setIdCreado(Integer idCreado) {
-		this.idCreado = idCreado;
-	}
-	@Autowired
 	public Date getFechaCreado() {
 		return fechaCreado;
 	}
@@ -85,11 +74,11 @@ public class Aprobaciones implements Serializable{
 		this.usuario = usuario;
 	}
 	@Autowired
-	public Presupuestos getHonorario() {
+	public Presupuestos getPresupuesto() {
 		return presupuesto;
 	}
 	@Autowired
-	public void setHonorario(Presupuestos presupuesto) {
+	public void setPresupuesto(Presupuestos presupuesto) {
 		this.presupuesto = presupuesto;
 	}
 	@Autowired

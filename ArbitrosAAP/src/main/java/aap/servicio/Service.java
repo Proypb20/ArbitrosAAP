@@ -26,6 +26,8 @@ public interface Service {
 
 	void actualizarUsuario(Usuarios usuario);
 	
+	void inactivarUsuario(Usuarios usuario);
+	
 	/**/
 	
 	ArrayList<Eventos> obtenerEventos();

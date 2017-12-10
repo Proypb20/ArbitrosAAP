@@ -52,6 +52,7 @@ public class DataAccessHibernateTemplate implements DataAccess {
 	@Transactional(propagation=Propagation.REQUIRED, readOnly=true)
 	public ArrayList<Usuarios> obtenerUsuarios() {
 		return (ArrayList<Usuarios>) this.hibernateTemplate.loadAll(Usuarios.class);
+		/*Filtrar por Activos*/
 	}
 	
 	@SuppressWarnings("unchecked")
@@ -73,6 +74,11 @@ public class DataAccessHibernateTemplate implements DataAccess {
 
 	@Transactional(propagation=Propagation.REQUIRED)
 	public void actualizarUsuario(Usuarios usuario) {
+		this.hibernateTemplate.update(usuario);
+	}
+	
+	@Transactional(propagation=Propagation.REQUIRED)
+	public void inactivarUsuario(Usuarios usuario) {
 		this.hibernateTemplate.update(usuario);
 	}
 	

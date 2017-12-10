@@ -56,6 +56,11 @@ public class ServiceBasico implements Service {
 	public void actualizarUsuario(Usuarios usuario) {
 		dataAccess.actualizarUsuario(usuario);
 	}
+	
+	@Override
+	public void inactivarUsuario(Usuarios usuario) {
+		dataAccess.inactivarUsuario(usuario);
+	}
 
 	@Override
 	public ArrayList<Eventos> obtenerEventos() {

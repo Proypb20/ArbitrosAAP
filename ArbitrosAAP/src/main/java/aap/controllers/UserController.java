@@ -9,7 +9,6 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -90,7 +89,6 @@ public class UserController {
 	
 	@RequestMapping(value ="/ActualizarUsuario" , method= {RequestMethod.POST})
 	public ModelAndView ActualizarUsuario(Usuarios user,
-			       @RequestParam(value="arbitra", required=false) String arbitra,
 			       HttpServletRequest request)
 	{
 		ModelAndView MV = new ModelAndView();
@@ -153,6 +151,7 @@ public class UserController {
 		MV.setViewName("mostrarusuarios");
 		return MV;
 	}
+	
 	@RequestMapping( value="Modusuario.html", method = {RequestMethod.GET})
 	public ModelAndView ModificarUsuario(HttpServletRequest request)
 	{
@@ -161,6 +160,21 @@ public class UserController {
 		Usuarios usuario = service.obtenerUsuario((Integer) session.getAttribute("IdU"));
 		MV.addObject("usuariom", usuario); 
 		MV.setViewName("modificarusuario");
+		return MV;
+	}
+	
+	@RequestMapping ( value="EliminarUsuario.html", method = {RequestMethod.POST})
+	public ModelAndView EliminarUsuario(Usuarios usuario)
+	{
+		ModelAndView MV = new ModelAndView();
+		String mensaje = new String();
+		Usuarios usuario2 = new Usuarios();
+		usuario2 = service.obtenerUsuario(usuario.getIdUsuario());
+		usuario2.setEstado("I");
+		service.inactivarUsuario(usuario2);
+	    mensaje = "Usuario Dado de Baja con Exito";
+		MV.addObject("Mensaje",mensaje);
+		MV.setViewName("inicio");
 		return MV;
 	}
 }

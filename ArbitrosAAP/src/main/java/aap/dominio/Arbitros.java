@@ -34,10 +34,6 @@ public class Arbitros implements Serializable{
 	@Autowired
 	@Column( name = "fechaBaja")
 	private Date  fechaBaja;
-
-	@Autowired
-	@Column( name = "idCreado")
-	private Integer idCreado;
 	
 	@Autowired
     @Column( name = "fechaCreado")
@@ -105,18 +101,12 @@ public class Arbitros implements Serializable{
 	public void setFechaBaja(Date fechaBaja) {
 		this.fechaBaja = fechaBaja;
 	}
-	@Autowired
-	public Integer getIdCreado() {
-		return idCreado;
-	}
-	@Autowired
-	public void setIdCreado(Integer idCreado) {
-		this.idCreado = idCreado;
-	}
+	
 	@Autowired
 	public Date getFechaCreado() {
 		return fechaCreado;
 	}
+	
 	@Autowired
 	public void setFechaCreado(Date fechaCreado) {
 		this.fechaCreado = fechaCreado;
