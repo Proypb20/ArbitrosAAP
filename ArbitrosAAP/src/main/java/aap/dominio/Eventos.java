@@ -83,6 +83,13 @@ public class Eventos implements Serializable{
 	public void setTorneo(Torneos torneo) {
 		this.torneo = torneo;
 	}
+    
+    @Autowired
+    public Eventos()
+    {
+    	estado = "A";
+    	fechaCreado = Otros.GetSysdate();
+    }
 
     @Autowired
 	public int getIdEvento() {

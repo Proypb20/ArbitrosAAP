@@ -26,15 +26,25 @@ public class Categorias implements Serializable{
 	@Autowired
 	@Column( name = "honorarios")
 	private Integer honorarios;
+	
 	@Autowired
-	@Column( name = "estado")
-	private String estado;
+    @Column( name = "idCreado")
+	private Integer idCreado;
+	
 	@Autowired
     @Column( name = "fechaCreado")
 	private Date  fechaCreado;
+	
 	@Autowired
     @OneToMany( mappedBy = "categoria", fetch= FetchType.LAZY) 
 	private List<Arbitros> arbitro = new ArrayList<>();
+	
+	@Autowired
+	public Categorias()
+	{
+		fechaCreado = Otros.GetSysdate();
+	}
+	
 	@Autowired
 	public Integer getIdCategoria() {
 		return idCategoria;
@@ -59,14 +69,16 @@ public class Categorias implements Serializable{
 	public void setHonorarios(Integer honorarios) {
 		this.honorarios = honorarios;
 	}
+	
 	@Autowired
-	public String getEstado() {
-		return estado;
+	public Integer getidCreado() {
+		return idCreado;
 	}
 	@Autowired
-	public void setEstado(String estado) {
-		this.estado = estado;
+	public void setidCreado(Integer idCreado) {
+		this.idCreado = idCreado;
 	}
+	
 	@Autowired
 	public Date getFechaCreado() {
 		return fechaCreado;

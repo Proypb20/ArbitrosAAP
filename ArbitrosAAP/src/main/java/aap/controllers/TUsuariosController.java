@@ -1,23 +1,25 @@
 package aap.controllers;
 
-import java.util.List;
-
 import javax.servlet.ServletConfig;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 import org.springframework.web.servlet.ModelAndView;
 
-import aap.dominio.*;
+import aap.dominio.TiposUsuario;
 import aap.servicio.Service;
 
 @Controller
-public class MainController {
+public class TUsuariosController {
+
+	public TUsuariosController(){}
 	
-	public MainController(){}
 	@Autowired
 	public Service service;
 	
@@ -27,29 +29,24 @@ public class MainController {
 		
 		this.service = (Service) ctx.getBean("serviceBean");
 	}
-
-	@RequestMapping("index.html")
-	public ModelAndView redireccion(){
+	
+	@RequestMapping("CrearTiposUsuario.html")
+	public ModelAndView redirecciontu(){
 		ModelAndView MV = new ModelAndView();
-		MV.addObject("command", new Usuarios());
-		MV.setViewName("index");
-		return MV;
-	}	
-	@RequestMapping("inicio.html")
-	public ModelAndView redireccionin(){
-		ModelAndView MV = new ModelAndView();
-		MV.setViewName("inicio");
+		MV.addObject("command", new TiposUsuario());
+		MV.setViewName("creartipousuarios");
 		return MV;
 	}
-	@RequestMapping("Inscribirse.html")
-	public ModelAndView redireccionins(){
+	
+	@RequestMapping(value ="/GuardarTUsuarios" , method= {RequestMethod.POST})
+	public ModelAndView GuardarTorneo(TiposUsuario tipousuario,HttpServletRequest request)
+	{
 		ModelAndView MV = new ModelAndView();
-		List<Torneos> torneo = service.obtenerTorneos();
-		MV.addObject("TorneoList", torneo);
-		List<Eventos> evento = service.obtenerEventos();
-		MV.addObject("EventoList", evento);
-		MV.addObject("command",new Presupuestos());
-		MV.setViewName("inscripcion");
+		HttpSession session = request.getSession();
+		tipousuario.setidCreado((Integer) session.getAttribute("IdU"));
+		service.insertarTiposUsuario(tipousuario);
+		MV.addObject("Mensaje", "Categoria Guardada Exitosamente");
+		MV.setViewName("inicio");
 		return MV;
 	}
 }

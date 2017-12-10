@@ -39,12 +39,18 @@ public class TiposUsuario implements Serializable{
 	private String arbitra;
 	
 	@Autowired
+    @Column( name = "idCreado")
+	private Integer idCreado;
+	
+	@Autowired
     @Column( name = "fechaCreado")
 	private Date  fechaCreado;
 	
 	@Autowired
 	@OneToMany( mappedBy = "tipousuario", fetch= FetchType.LAZY) 
 	private List<Usuarios> usuario = new ArrayList<>();
+	
+	
 	
 	@Autowired
     public List<Usuarios> getUsuario() {
@@ -57,7 +63,7 @@ public class TiposUsuario implements Serializable{
 	}
 	
 	@Autowired
-	public TiposUsuario ()
+	public TiposUsuario()
 	{
 		fechaCreado = Otros.GetSysdate();
 	}
@@ -85,6 +91,16 @@ public class TiposUsuario implements Serializable{
 	@Autowired
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
+	}
+	
+	@Autowired
+	public Integer getidCreado() {
+		return idCreado;
+	}
+	
+	@Autowired
+	public void setidCreado(Integer idCreado) {
+		this.idCreado = idCreado;
 	}
 	
 	@Autowired

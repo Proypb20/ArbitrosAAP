@@ -16,6 +16,7 @@ import org.springframework.web.context.support.WebApplicationContextUtils;
 import org.springframework.web.servlet.ModelAndView;
 import aap.dominio.Usuarios;
 import aap.dominio.Arbitros;
+import aap.dominio.TiposUsuario;
 import aap.servicio.Service;
 
 @Controller
@@ -30,6 +31,25 @@ public class UserController {
 				.getRequiredWebApplicationContext(config.getServletContext());
 		
 		this.service = (Service) ctx.getBean("serviceBean");
+	}
+	
+	@RequestMapping("CrearUsuario.html")
+	public ModelAndView redireccionus(){
+		ModelAndView MV = new ModelAndView();
+		MV.addObject("command", new Usuarios());
+		List<TiposUsuario> tipousuarios = service.obtenerTipoUsuario();
+		MV.addObject("TipoUsuarioList", tipousuarios);
+		MV.setViewName("crearuser");
+		return MV;
+	}
+	@RequestMapping("EliminarUsuarios.html")
+	public ModelAndView redireccioneus(){
+		ModelAndView MV = new ModelAndView();
+		MV.addObject("command", new Usuarios());
+		List<Usuarios> usuario = service.obtenerUsuarios();
+		MV.addObject("UsuarioList", usuario);
+		MV.setViewName("eliminaruser");
+		return MV;
 	}
 	
 	@RequestMapping(value ="/BuscarUsuario" , method= {RequestMethod.POST})
@@ -109,6 +129,7 @@ public class UserController {
 	@RequestMapping(value ="/GuardarUsuario" , method= {RequestMethod.POST})
 	public ModelAndView GuardarUsuario(Usuarios user,
 			       @RequestParam(value="arbitra", required=false) String arbitra,
+			       @RequestParam(value="nroarb", required=false) String NroArbitro,
 			       HttpServletRequest request)
 	{
 		ModelAndView MV = new ModelAndView();
@@ -117,21 +138,32 @@ public class UserController {
 		
 		 if (!ValidarUsuario(user))
 		 {
-			if (arbitra!="Y")
-			{
-				Arbitros arbitro = new Arbitros();
-				user.setArbitro(arbitro);
-				mensaje = "Arbitro creado con Exito";
-			}
-			service.insertarUsuario(user);
-		    mensaje = "Usuario creado con Exito";
-			MV.addObject("command", new Usuarios());
-			MV.addObject("Mensaje",mensaje);
-			if ((Integer)session.getAttribute("IdU") == null)
-			MV.setViewName("index");
-			else
-				MV.setViewName("inicio");
-			return MV;
+			 if (user.getTipousuario().getIdTipoUsuario() == 0)
+					 {
+				 		mensaje = "Debe Ingresar un tipo de Usuario";
+				 		MV.addObject("Mensaje",mensaje);
+						MV.setViewName("crearuser");
+						return MV;
+					 }
+			 else
+			 {
+				if (arbitra!="N")
+				{
+					Arbitros arbitro = new Arbitros();
+					arbitro.setNroArbitro(Integer.parseInt(NroArbitro));
+					user.setArbitro(arbitro);
+					mensaje = "Arbitro creado con Exito";
+				}
+				service.insertarUsuario(user);
+			    mensaje = "Usuario creado con Exito";
+				MV.addObject("command", new Usuarios());
+				MV.addObject("Mensaje",mensaje);
+				if ((Integer)session.getAttribute("IdU") == null)
+				MV.setViewName("index");
+				else
+					MV.setViewName("inicio");
+				return MV;
+			 }
 		 }
 		 else
 		 {
