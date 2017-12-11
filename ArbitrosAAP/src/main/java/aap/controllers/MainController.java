@@ -1,7 +1,5 @@
 package aap.controllers;
 
-import java.util.List;
-
 import javax.servlet.ServletConfig;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,15 +39,5 @@ public class MainController {
 		MV.setViewName("inicio");
 		return MV;
 	}
-	@RequestMapping("Inscribirse.html")
-	public ModelAndView redireccionins(){
-		ModelAndView MV = new ModelAndView();
-		List<Torneos> torneo = service.obtenerTorneos();
-		MV.addObject("TorneoList", torneo);
-		List<Eventos> evento = service.obtenerEventos();
-		MV.addObject("EventoList", evento);
-		MV.addObject("command",new Presupuestos());
-		MV.setViewName("inscripcion");
-		return MV;
-	}
+
 }

@@ -162,4 +162,33 @@ public class ServiceBasico implements Service {
 	public void actualizarTiposUsuario(TiposUsuario tipousuario) {
 		dataAccess.actualizarTiposUsuario(tipousuario);
 	}
+	
+	@Override
+	public ArrayList<Presupuestos> obtenerPresupuestos(String Estado)
+	{
+		return this.dataAccess.obtenerPresupuestos(Estado);
+	}
+	
+	@Override
+	public Presupuestos obtenerPresupuesto(Integer idPresupuesto)
+	{
+		return this.dataAccess.obtenerPresupuesto(idPresupuesto);
+	}
+	
+	@Override
+	public void insertarPresupuesto(Presupuestos presupuesto)
+	{
+		dataAccess.insertarPresupuesto(presupuesto);
+	}
+	
+	@Override
+	public void actualizarPresupuesto(Presupuestos presupuesto)
+	{
+		dataAccess.actualizarPresupuesto(presupuesto);
+	}
+	
+	@Override
+	public void eliminarPresupuesto(Integer idPresupuesto) {
+		dataAccess.eliminarPresupuesto(idPresupuesto);
+	}
 }

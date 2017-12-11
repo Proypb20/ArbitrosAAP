@@ -72,4 +72,16 @@ public interface DataAccess {
 	void eliminarTiposUsuario(Integer idTipoUsuario);
 	
 	void actualizarTiposUsuario(TiposUsuario tipousuario);
+	
+	/**/
+	
+	ArrayList<Presupuestos> obtenerPresupuestos(String Estado);
+	
+	Presupuestos obtenerPresupuesto(Integer idPresupuesto);
+	
+	void insertarPresupuesto(Presupuestos presupuesto);
+	
+	void actualizarPresupuesto(Presupuestos presupuesto);
+	
+	void eliminarPresupuesto(Integer idPresupuesto);
 }

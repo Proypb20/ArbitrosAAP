@@ -29,7 +29,7 @@
 				<td>${usuarios.usuario}</td>
 				<td>${usuarios.apellido}, ${usuarios.nombre}</td>
 				<td>${usuarios.tipousuario.nombre}</td>
-				<td>${usuarios.tipoDocumento}: ${usuarios.nroDocumento}</td>
+				<td>${usuarios.tipoDocumento}  ${usuarios.nroDocumento}</td>
 				<td>${usuarios.direccion}</td>
 				<td>${usuarios.localidad}</td>
 				<td>${usuarios.provincia}</td>
@@ -39,10 +39,7 @@
 				</tr>
 				
 			</c:forEach>
-			<tr>
-	<td> </td>
-	<td><input type="button" value="Volver"  onclick="javascript:history.go(-1)"> </td>
-	</tr>
 	</table>
+	<input type="button" value="Volver"  onclick="javascript:history.go(-1)">
 </body>
 </html>

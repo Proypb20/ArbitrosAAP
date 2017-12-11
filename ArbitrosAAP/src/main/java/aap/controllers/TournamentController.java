@@ -14,8 +14,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 import org.springframework.web.servlet.ModelAndView;
 
-import aap.dominio.Torneos;
 import aap.dominio.Eventos;
+import aap.dominio.Presupuestos;
+import aap.dominio.Torneos;
 import aap.servicio.Service;
 
 @Controller
@@ -71,6 +72,59 @@ public class TournamentController {
 		service.insertarEvento(evento);
 		MV.setViewName("inicio");
 		MV.addObject("Mensaje", "Evento Guardado Exitosamente");
+		return MV;
+	}
+	@RequestMapping("Inscribirse.html")
+	public ModelAndView redireccionins(){
+		ModelAndView MV = new ModelAndView();
+		MV.addObject("command",new Presupuestos());
+		List<Torneos> torneo = service.obtenerTorneos();
+		MV.addObject("TorneoList", torneo);
+		List<Eventos> evento = service.obtenerEventos();
+		MV.addObject("EventoList", evento);
+		MV.setViewName("inscripcion");
+		return MV;
+	}
+
+	@RequestMapping(value ="/Inscribir.html" , method= {RequestMethod.POST})
+	public ModelAndView InscribirArbitros(Presupuestos presupuesto,HttpServletRequest request){
+		ModelAndView MV = new ModelAndView();
+		HttpSession session = request.getSession();
+		presupuesto.setIdCreado((Integer) session.getAttribute("IdU"));
+		service.insertarPresupuesto(presupuesto);
+		MV.addObject("Mensaje","Inscripcion realizada correctamente");
+		MV.setViewName("inicio");
+		return MV;
+	}
+	
+	@RequestMapping(value = "MostrarPresupuestosN.html")
+	public ModelAndView ListarPresupuestosN()
+	{
+		ModelAndView MV = new ModelAndView();
+		List<Presupuestos> presupuesto = service.obtenerPresupuestos("N"); 
+		MV.addObject("PresupuestoList", presupuesto); 
+		MV.setViewName("mostrarpresupuesto");
+		return MV;
+	}
+	
+	@RequestMapping(value = "ModificarPresupuesto.html")
+	public ModelAndView ModificarPresupuesto()
+	{
+		ModelAndView MV = new ModelAndView();
+		MV.addObject("command",new Presupuestos());
+		List<Presupuestos> presupuesto = service.obtenerPresupuestos("N"); 
+		MV.addObject("PresupuestoList", presupuesto); 
+		MV.setViewName("modificarpresupuesto");
+		return MV;
+	}
+	
+	@RequestMapping(value = "EliminarPresupuesto.html")
+	public ModelAndView EliminarPresupuesto(Presupuestos presupuesto)
+	{
+		ModelAndView MV = new ModelAndView();
+		service.eliminarPresupuesto(presupuesto.getIdPresupuesto()); 
+		MV.addObject("Mensaje", "Presupuesto Modificado correctamente"); 
+		MV.setViewName("inicio");
 		return MV;
 	}
 }

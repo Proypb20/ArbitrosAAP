@@ -1,5 +1,4 @@
 aap\controllers\ArbitrosController.class
-aap\dominio\Aprobaciones.class
 aap\dominio\Eventos.class
 aap\dataccess\DataAccess.class
 aap\dominio\Presupuestos.class
@@ -11,6 +10,7 @@ aap\controllers\TournamentController.class
 aap\dominio\Usuarios.class
 aap\dataccess\impl\DataAccessHibernateTemplate.class
 aap\controllers\CategoryController.class
+aap\controllers\TUsuariosController.class
 aap\dominio\Otros.class
 aap\dominio\TiposUsuario.class
 aap\dominio\Torneos.class

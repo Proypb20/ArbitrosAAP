@@ -8,6 +8,7 @@ C:\Users\Eduardo\git\ArbitrosAAP\ArbitrosAAP\src\main\java\aap\dominio\Presupues
 C:\Users\Eduardo\git\ArbitrosAAP\ArbitrosAAP\src\main\java\aap\servicio\impl\ServiceBasico.java
 C:\Users\Eduardo\git\ArbitrosAAP\ArbitrosAAP\src\main\java\aap\controllers\CategoryController.java
 C:\Users\Eduardo\git\ArbitrosAAP\ArbitrosAAP\src\main\java\aap\dominio\Categorias.java
+C:\Users\Eduardo\git\ArbitrosAAP\ArbitrosAAP\src\main\java\aap\controllers\TUsuariosController.java
 C:\Users\Eduardo\git\ArbitrosAAP\ArbitrosAAP\src\main\java\aap\dataccess\DataAccess.java
 C:\Users\Eduardo\git\ArbitrosAAP\ArbitrosAAP\src\main\java\aap\dominio\Arbitros.java
 C:\Users\Eduardo\git\ArbitrosAAP\ArbitrosAAP\src\main\java\aap\dominio\Usuarios.java
@@ -15,4 +16,3 @@ C:\Users\Eduardo\git\ArbitrosAAP\ArbitrosAAP\src\main\java\aap\servicio\Service.
 C:\Users\Eduardo\git\ArbitrosAAP\ArbitrosAAP\src\main\java\aap\controllers\MainController.java
 C:\Users\Eduardo\git\ArbitrosAAP\ArbitrosAAP\src\main\java\aap\controllers\UserController.java
 C:\Users\Eduardo\git\ArbitrosAAP\ArbitrosAAP\src\main\java\aap\controllers\TournamentController.java
-C:\Users\Eduardo\git\ArbitrosAAP\ArbitrosAAP\src\main\java\aap\dominio\Aprobaciones.java

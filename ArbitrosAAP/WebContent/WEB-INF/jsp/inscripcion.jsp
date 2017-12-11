@@ -9,16 +9,29 @@
 <body>
 <frm:form action="Inscribir.html" method="post">
 <table>
-                 <tr>
+				 <tr>
 					<td align="left">Torneo</td>
-					<td><frm:input name="torneo" id="torneo" class="input" value="" size="25" type="text" path="torneo"/></td>
+					<td><frm:select path="evento.torneo.idTorneo">
+						<frm:options items="${TorneoList}" itemLabel="nombre" itemValue="idTorneo"/>
+						</frm:select>
+					</td>
 				</tr>
 				<tr>
 					<td align="left">Evento</td>
-					<td><frm:input name="evento" id="evento" class="input" value="" size="25" type="text" path="evento"/></td>
+					<td><frm:select path="evento.idEvento">
+						<frm:options items="${EventoList}"  itemLabel="nombre" itemValue="idEvento"/>
+						</frm:select>
+					</td>
 				</tr>
+				<tr>
+					<td align="left">Vehiculo</td>
+					<td><frm:select name="viatico" class="form-control" style="width: 175px;" path="viatico">
+						<option selected="selected" value="N">Necesito Transporte</option>
+						<option value="Y">Poseo Vehiculo/Puedo llevar gente</option>
+						<option value="N">Viajo por mis propios medios</option>
+					</frm:select></td>
 			    <tr>
-			    	<td> <input type="submit" value="Inscribirse" name="btninsc"> </td>
+			    	<td> <input type="submit" value="Aceptar"> </td>
 			        <td> <input type="reset" value="Limpiar"> </td>
 			        <td> <input type="button" value="Cancelar"  onclick="javascript:history.go(-1)"> </td>
 			    </tr>

@@ -140,8 +140,17 @@ function validation() {
 					<td><frm:input name="email" id="email" class="input" value="" size="25" type="email" path="email"/></td>
 				</tr>
 				<tr>
+				<tr>
+					<td align="left">Tipo Usuario</td>
+					<td><frm:select path="tipousuario.idTipoUsuario">
+							<frm:options items="${TipoUsuarioList}" itemLabel="nombre" itemValue="idTipoUsuario"/>
+						</frm:select></td>
+				</tr>
+				<tr>
 					<td align="left">Arbitra</td>
 			    	<td><input type="checkbox" name="arbitra" value="Y" Checked><BR></td>
+			    	<td>Nro Arbitro: </td>
+			    	<td><input name="nroarb" id="nroarb" class="input" value="" size="25"/>
 				</tr>
 				</table>
 				<table>

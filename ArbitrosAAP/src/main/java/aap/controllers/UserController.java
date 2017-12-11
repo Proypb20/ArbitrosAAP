@@ -209,4 +209,14 @@ public class UserController {
 		MV.setViewName("inicio");
 		return MV;
 	}
+	
+	@RequestMapping("/listarArbitros.html")
+	public ModelAndView ListarArbitros(){
+
+		ModelAndView MV = new ModelAndView();
+		List<Usuarios> arbitros = service.obtenerArbitros(); 
+		MV.addObject("arbitrolist", arbitros); 
+		MV.setViewName("mostrararbitros");
+		return MV;
+	}
 }

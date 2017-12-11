@@ -1,9 +1,7 @@
 package aap.dominio;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,7 +10,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
@@ -59,18 +56,14 @@ public class Presupuestos implements Serializable{
 	private Date  fechaCreado;
 
     @Autowired
-    @ManyToOne(fetch= FetchType.LAZY)
+    @ManyToOne(fetch= FetchType.EAGER)
 	@JoinColumn(name="idEvento") 
     private Eventos evento;
     
     @Autowired
-    @ManyToOne(fetch= FetchType.LAZY)
+    @ManyToOne(fetch= FetchType.EAGER)
 	@JoinColumn(name="idArbitro") 
     private Arbitros arbitro;
-    
-    @Autowired
-    @OneToMany (mappedBy = "presupuesto", fetch= FetchType.LAZY) 
-    private List<Aprobaciones> aprobacion = new ArrayList<>();
     
     @Autowired
 	public Presupuestos ()
@@ -173,15 +166,5 @@ public class Presupuestos implements Serializable{
 	public void setArbitro(Arbitros arbitro) {
 		this.arbitro = arbitro;
 	}
-
-    @Autowired
-	public List<Aprobaciones> getAprobacion() {
-		return aprobacion;
-	}
-
-    @Autowired
-	public void setAprobacion(List<Aprobaciones> aprobacion) {
-		this.aprobacion = aprobacion;
-	}
-
+    
 }

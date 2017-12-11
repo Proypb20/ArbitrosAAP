@@ -9,6 +9,7 @@
 </head>
 <body>
 <frm:form action="EliminarUsuario.html" method="post" >
+    
 		<table>
 			<tr>
 				<td align="left">Seleccione el Usuario: </td>

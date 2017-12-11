@@ -15,6 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 import aap.dataccess.DataAccess;
 import aap.dominio.Categorias;
 import aap.dominio.Eventos;
+import aap.dominio.Presupuestos;
 import aap.dominio.TiposUsuario;
 import aap.dominio.Torneos;
 import aap.dominio.Usuarios;
@@ -234,5 +235,36 @@ public class DataAccessHibernateTemplate implements DataAccess {
 			numero = numeros.get(0);		
 		    return (numero);
 		} 
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Transactional(propagation=Propagation.REQUIRED)
+	public ArrayList<Presupuestos> obtenerPresupuestos(String Estado) {
+		DetachedCriteria criteria = DetachedCriteria.forClass(Presupuestos.class);
+		criteria.add(Restrictions.eq("estado", Estado));
+		return (ArrayList<Presupuestos>) this.hibernateTemplate.findByCriteria(criteria);
+	}
+	
+	@Transactional(propagation=Propagation.REQUIRED)
+	public Presupuestos obtenerPresupuesto(Integer idPresupuesto) {
+		return this.hibernateTemplate.get(Presupuestos.class,idPresupuesto);
+	}
+	
+	@Transactional(propagation=Propagation.REQUIRED)
+	public void insertarPresupuesto(Presupuestos presupuesto) {
+		this.hibernateTemplate.save(presupuesto);
+	}
+	
+	@Transactional(propagation=Propagation.REQUIRED)
+	public void actualizarPresupuesto(Presupuestos presupuesto) {
+		this.hibernateTemplate.update(presupuesto);
+	}
+
+	@Transactional(propagation=Propagation.REQUIRES_NEW)
+	public void eliminarPresupuesto(Integer idPresupuesto) {
+		Presupuestos presupuesto = new Presupuestos();
+		presupuesto.setIdPresupuesto(idPresupuesto);
+		this.hibernateTemplate.delete(presupuesto);
+		
 	}
 }
