@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="frm" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -8,6 +10,7 @@
 </head>
 <body>
 <frm:form action="Inscribir.html" method="post">
+<form:hidden path="arbitro.idArbitro" value="${idArbitro}"/>
 <table>
 				 <tr>
 					<td align="left">Torneo</td>
@@ -27,7 +30,7 @@
 					<td align="left">Vehiculo</td>
 					<td><frm:select name="viatico" class="form-control" style="width: 175px;" path="viatico">
 						<option selected="selected" value="N">Necesito Transporte</option>
-						<option value="Y">Poseo Vehiculo/Puedo llevar gente</option>
+						<option value="Y">Poseo Vehiculo-Puedo llevar gente</option>
 						<option value="N">Viajo por mis propios medios</option>
 					</frm:select></td>
 			    <tr>

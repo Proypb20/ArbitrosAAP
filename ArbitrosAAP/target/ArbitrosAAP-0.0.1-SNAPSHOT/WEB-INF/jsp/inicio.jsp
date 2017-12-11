@@ -19,7 +19,6 @@
 <h2>Bienvenido ${IdName}</h2>
 <c:if test="${empty idTu}">
        <c:set var = "idTu" scope = "session" value = "${idTypeUser}"/>
-<%--      <c:set var = "idTu" scope = "session" value = "1"/> Hasta nueva definicion de Encargado--%>
       <c:set var = "idU" scope = "session" value = "${idUser}"/>
 </c:if>      
 <c:choose>
@@ -29,10 +28,6 @@
     </c:when>    
     <c:when test="${idTu=='2'}">
         <jsp:include page="encMenu.jsp"></jsp:include>
-        <br />
-    </c:when> 
-    <c:when test="${idTu=='3'}">
-        <jsp:include page="aprMenu.jsp"></jsp:include>
         <br />
     </c:when> 
     <c:otherwise>

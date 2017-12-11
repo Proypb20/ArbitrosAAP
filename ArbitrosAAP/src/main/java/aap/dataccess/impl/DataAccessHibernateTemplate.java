@@ -48,7 +48,16 @@ public class DataAccessHibernateTemplate implements DataAccess {
 	public Usuarios obtenerUsuario(Integer IdU) {
 		return this.hibernateTemplate.get(Usuarios.class,IdU);
 	}
-
+	
+	@Override
+	@Transactional(propagation=Propagation.REQUIRED, readOnly=true)
+	public Integer obteneridArbitro(Integer IdU)
+	{
+		Usuarios usuario =  this.hibernateTemplate.get(Usuarios.class,IdU);
+		return usuario.getArbitro().getIdArbitro();
+		
+	}
+	
 	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional(propagation=Propagation.REQUIRED, readOnly=true)
@@ -239,9 +248,17 @@ public class DataAccessHibernateTemplate implements DataAccess {
 	
 	@SuppressWarnings("unchecked")
 	@Transactional(propagation=Propagation.REQUIRED)
-	public ArrayList<Presupuestos> obtenerPresupuestos(String Estado) {
+	public ArrayList<Presupuestos> obtenerPresupuestosE(String Estado) {
 		DetachedCriteria criteria = DetachedCriteria.forClass(Presupuestos.class);
 		criteria.add(Restrictions.eq("estado", Estado));
+		return (ArrayList<Presupuestos>) this.hibernateTemplate.findByCriteria(criteria);
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Transactional(propagation=Propagation.REQUIRED)
+	public ArrayList<Presupuestos> obtenerPresupuestos(Integer idEvento) {
+		DetachedCriteria criteria = DetachedCriteria.forClass(Presupuestos.class);
+		criteria.add(Restrictions.eq("evento.idEvento", idEvento));
 		return (ArrayList<Presupuestos>) this.hibernateTemplate.findByCriteria(criteria);
 	}
 	

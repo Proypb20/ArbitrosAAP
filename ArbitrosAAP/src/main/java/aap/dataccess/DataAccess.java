@@ -12,6 +12,8 @@ public interface DataAccess {
 
 	public void insertarUsuario(Usuarios usuario);
 	
+	public Integer obteneridArbitro(Integer IdU);
+	
 	public Usuarios obtenerUsuario(Integer IdU);
 
 	public ArrayList<Usuarios> obtenerUsuarios();
@@ -75,7 +77,9 @@ public interface DataAccess {
 	
 	/**/
 	
-	ArrayList<Presupuestos> obtenerPresupuestos(String Estado);
+	ArrayList<Presupuestos> obtenerPresupuestosE(String Estado);
+	
+	ArrayList<Presupuestos> obtenerPresupuestos(Integer idEvento);
 	
 	Presupuestos obtenerPresupuesto(Integer idPresupuesto);
 	

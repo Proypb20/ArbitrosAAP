@@ -1,4 +1,3 @@
-aap\controllers\ArbitrosController.class
 aap\dominio\Eventos.class
 aap\dataccess\DataAccess.class
 aap\dominio\Presupuestos.class

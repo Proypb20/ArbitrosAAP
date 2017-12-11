@@ -17,6 +17,8 @@ public interface Service {
 
 	Usuarios obtenerUsuario(Integer idU);
 	
+	Integer obteneridArbitro(Integer IdU);
+	
 	Usuarios LoginUsuario(String query);
 	
 	/*public Integer ProximoArbitro(String query);*/
@@ -79,7 +81,9 @@ public interface Service {
 	
 	/**/
 	
-	ArrayList<Presupuestos> obtenerPresupuestos(String Estado);
+	ArrayList<Presupuestos> obtenerPresupuestos(Integer idEvento);
+	
+	ArrayList<Presupuestos> obtenerPresupuestosE(String estado);
 	
 	Presupuestos obtenerPresupuesto(Integer idPresupuesto);
 	

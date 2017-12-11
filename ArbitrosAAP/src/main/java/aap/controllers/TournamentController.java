@@ -75,13 +75,15 @@ public class TournamentController {
 		return MV;
 	}
 	@RequestMapping("Inscribirse.html")
-	public ModelAndView redireccionins(){
+	public ModelAndView redireccionins(HttpServletRequest request){
 		ModelAndView MV = new ModelAndView();
 		MV.addObject("command",new Presupuestos());
 		List<Torneos> torneo = service.obtenerTorneos();
 		MV.addObject("TorneoList", torneo);
 		List<Eventos> evento = service.obtenerEventos();
 		MV.addObject("EventoList", evento);
+		HttpSession session = request.getSession();
+		MV.addObject("idArbitro",service.obteneridArbitro((Integer) session.getAttribute("IdU")));
 		MV.setViewName("inscripcion");
 		return MV;
 	}
@@ -101,8 +103,20 @@ public class TournamentController {
 	public ModelAndView ListarPresupuestosN()
 	{
 		ModelAndView MV = new ModelAndView();
-		List<Presupuestos> presupuesto = service.obtenerPresupuestos("N"); 
-		MV.addObject("PresupuestoList", presupuesto); 
+		Eventos evento = new Eventos();
+		MV.addObject("command",evento);
+		List<Eventos> eventos = service.obtenerEventos();
+		MV.addObject("EventoList", eventos);
+		MV.setViewName("mostrarpresupuestoE");
+		return MV;
+	}
+	
+	@RequestMapping(value = "ListarPres.html")
+	public ModelAndView ListarPresupuestos(Eventos evento)
+	{
+		ModelAndView MV = new ModelAndView();
+		List<Presupuestos> presupuesto = service.obtenerPresupuestos(evento.getIdEvento());
+		MV.addObject("PresupuestoList", presupuesto);
 		MV.setViewName("mostrarpresupuesto");
 		return MV;
 	}
@@ -112,7 +126,7 @@ public class TournamentController {
 	{
 		ModelAndView MV = new ModelAndView();
 		MV.addObject("command",new Presupuestos());
-		List<Presupuestos> presupuesto = service.obtenerPresupuestos("N"); 
+		List<Presupuestos> presupuesto = service.obtenerPresupuestosE("N"); 
 		MV.addObject("PresupuestoList", presupuesto); 
 		MV.setViewName("modificarpresupuesto");
 		return MV;

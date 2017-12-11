@@ -35,6 +35,11 @@ public class ServiceBasico implements Service {
 	}
 
 	@Override
+	public Integer obteneridArbitro(Integer IdU){
+		return dataAccess.obteneridArbitro(IdU);
+	}
+	
+	@Override
 	public Usuarios LoginUsuario(String query) {
 		return dataAccess.LoginUsuario(query);
 	}
@@ -164,9 +169,15 @@ public class ServiceBasico implements Service {
 	}
 	
 	@Override
-	public ArrayList<Presupuestos> obtenerPresupuestos(String Estado)
+	public ArrayList<Presupuestos> obtenerPresupuestos(Integer idEvento)
 	{
-		return this.dataAccess.obtenerPresupuestos(Estado);
+		return this.dataAccess.obtenerPresupuestos(idEvento);
+	}
+	
+	@Override
+	public ArrayList<Presupuestos> obtenerPresupuestosE(String estado)
+	{
+		return this.dataAccess.obtenerPresupuestosE(estado);
 	}
 	
 	@Override
