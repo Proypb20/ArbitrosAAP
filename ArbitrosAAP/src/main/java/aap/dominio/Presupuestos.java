@@ -41,7 +41,7 @@ public class Presupuestos implements Serializable{
 	
 	@Autowired
 	@Column( name = "viatico")
-	private String viatico;
+	private int viatico;
 	
 	@Autowired
 	@Column( name = "estado")
@@ -103,12 +103,12 @@ public class Presupuestos implements Serializable{
 	}
 
     @Autowired
-	public String getViatico() {
+	public int getViatico() {
 		return viatico;
 	}
     
     @Autowired
-	public void setViatico(String viatico) {
+	public void setViatico(int viatico) {
 		this.viatico = viatico;
 	}
 
