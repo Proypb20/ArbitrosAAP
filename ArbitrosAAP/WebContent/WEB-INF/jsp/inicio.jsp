@@ -1,12 +1,12 @@
 <html>
 <%@ page language='java' contentType='text/html' isErrorPage='false' errorPage='error.jsp' %>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
-<title>Asociación Argentina de Paintball | Sitio Oficial de AAP | Inscripcion a eventos</title>
+<title>Asociacion Argentina de Paintball | Sitio Oficial de AAP | Inscripcion a eventos</title>
 
 <body>
 <header id="header">
 				<div class="logo">
-         			<a href="http://www.aapaintball.com.ar/" id="logo"><img src="http://www.aapaintball.com.ar/wp-content/uploads/2011/07/logo-aap-paintball-2016-1.png" alt="Asociación Argentina de Paintball" title="Sitio Oficial de AAP"></a>
+         			<a href="http://www.aapaintball.com.ar/" id="logo"><img src="http://www.aapaintball.com.ar/wp-content/uploads/2011/07/logo-aap-paintball-2016-1.png" alt="Asociaciï¿½n Argentina de Paintball" title="Sitio Oficial de AAP"></a>
                 </div>
 				<div class="clear"></div>
 				<div id="widget-header">

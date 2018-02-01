@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Asociacion Argentina de Paintball | Sitio Oficial de AAP | Crear Usuario</title>
 </head>
 <body>
 <script>

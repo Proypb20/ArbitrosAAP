@@ -8,7 +8,37 @@
 <title>Asociación Argentina de Paintball | Sitio Oficial de AAP | Presupuesto</title>
 </head>
 <body>
-
+<header id="headermc">
+				<div class="logo">
+         			<a href="http://www.aapaintball.com.ar/" id="logo"><img src="http://www.aapaintball.com.ar/wp-content/uploads/2011/07/logo-aap-paintball-2016-1.png" alt="Asociacion Argentina de Paintball" title="Sitio Oficial de AAP"></a>
+                </div>
+				<div class="clear"></div>
+				<div id="widget-header">
+				</div><!--#widget-header-->
+				<div class="clear"></div>
+				<div class="row-top">
+			    <div class="clear"></div>
+				</div>
+</header>
+<h2>Bienvenido ${IdName}</h2>
+<c:if test="${empty idTu}">
+       <c:set var = "idTu" scope = "session" value = "${idTypeUser}"/>
+      <c:set var = "idU" scope = "session" value = "${idUser}"/>
+</c:if>      
+<c:choose>
+    <c:when test="${idTu=='1'}">
+        <jsp:include page="admMenu.jsp"></jsp:include>
+        <br />
+    </c:when>    
+    <c:when test="${idTu=='2'}">
+        <jsp:include page="encMenu.jsp"></jsp:include>
+        <br />
+    </c:when> 
+    <c:otherwise>
+        <jsp:include page="arbMenu.jsp"></jsp:include>
+        <br />
+    </c:otherwise>
+</c:choose>
 	<table border="1px">
 		<thead>
 			<tr>
@@ -33,6 +63,6 @@
 				
 			</c:forEach>
 	</table>
-	<input type="button" value="Volver"  onclick="javascript:history.go(-1)">
+<!-- 	<input type="button" value="Volver"  onclick="javascript:history.go(-1)"> -->
 </body>
 </html>

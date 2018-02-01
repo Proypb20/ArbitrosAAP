@@ -55,6 +55,9 @@ public class CategoryController {
 		ModelAndView MV = new ModelAndView();
 		MV.addObject("command",new Categorias());
 		List<Categorias> categoria = service.obtenerCategorias();
+		Categorias categoria2 = new Categorias();
+		categoria2.setNombre("Seleccione una categoria");
+		categoria.add(0,categoria2);
 		MV.addObject("CategoriaList", categoria);
 		MV.setViewName("modificarcategoria");
 		return MV;
@@ -65,7 +68,7 @@ public class CategoryController {
 	{
 		ModelAndView MV = new ModelAndView();
 		String mensaje = new String();
-	    service.actualizarCategoria(categoria);
+		service.actualizarCategoria(categoria);
 		mensaje = "Categoria Actualizado con Exito";	
 		MV.addObject("Mensaje",mensaje);
 		MV.setViewName("inicio");

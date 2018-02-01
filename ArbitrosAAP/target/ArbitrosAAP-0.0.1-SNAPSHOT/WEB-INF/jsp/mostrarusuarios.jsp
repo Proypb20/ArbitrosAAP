@@ -6,6 +6,19 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
 </head>
+
+<header id="headermu">
+				<div class="logo">
+         			<a href="http://www.aapaintball.com.ar/" id="logo"><img src="http://www.aapaintball.com.ar/wp-content/uploads/2011/07/logo-aap-paintball-2016-1.png" alt="Asociaci�n Argentina de Paintball" title="Sitio Oficial de AAP"></a>
+                </div>
+				<div class="clear"></div>
+				<div id="widget-header">
+				</div><!--#widget-header-->
+				<div class="clear"></div>
+				<div class="row-top">
+			    <div class="clear"></div>
+				</div>
+</header>
 <body>
 
 	<table border="1px">
