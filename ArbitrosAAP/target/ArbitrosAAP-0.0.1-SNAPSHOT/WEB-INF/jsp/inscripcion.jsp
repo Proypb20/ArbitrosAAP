@@ -40,7 +40,7 @@
         <br />
     </c:otherwise>
 </c:choose>
-<frm:form action="Inscribir.html" method="post">
+<frm:form name="inscripto" action="Inscribir.html" method="post">
 <form:hidden path="arbitro.idArbitro" value="${idArbitro}"/>
 <table>
 				 <tr>
@@ -60,12 +60,12 @@
 				<tr>
 					<td align="left">Vehiculo</td>
 					<td><frm:select name="viatico" class="form-control" style="width: 175px;" path="viatico">
-						<option selected="selected" value="N">Necesito Transporte</option>
-						<option value="Y">Poseo Vehiculo-Puedo llevar gente</option>
-						<option value="N">Viajo por mis propios medios</option>
+						<option selected="selected" value=0>Necesito Transporte</option>
+						<option value=1>Poseo Vehiculo-Puedo llevar gente</option>
+						<option value=0>Viajo por mis propios medios</option>
 					</frm:select></td>
 			    <tr>
-			    	<td> <input type="submit" value="Aceptar"> </td>
+			    	<td> <input type="submit" value="Aceptar" onclick="validate()"> </td>
 			        <td> <input type="reset" value="Limpiar"> </td>
 <!-- 			        <td> <input type="button" value="Cancelar"  onclick="javascript:history.go(-1)"> </td> -->
 			    </tr>

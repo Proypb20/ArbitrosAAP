@@ -10,8 +10,7 @@
 <script>
 function getId()
 {
-	a = document.forms["modifyuser"]["idCategoria"].value;
-	alert(a);
+	document.getElementById("nombre").value =document.getElementById('idCategoria')[document.getElementById('idCategoria').selectedIndex].innerHTML;
 }
 function validId()
 {
@@ -60,7 +59,7 @@ function validId()
 		<table>
 			<tr>
 				<td align="left">Categoria</td>
-				<td><frm:select path="idCategoria">
+				<td><frm:select path="idCategoria" onchange="getId()">
 						<frm:options items="${CategoriaList}" itemLabel="nombre" itemValue="idCategoria"/>
 					</frm:select></td>
 			</tr>

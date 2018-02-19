@@ -94,7 +94,7 @@ public class Usuarios implements Serializable{
     
 	@Autowired
     @OneToOne (cascade={CascadeType.ALL},fetch= FetchType.EAGER)
-  	@JoinColumn (name="idArbitro") 
+  	@JoinColumn (name="idArbitro")
   	private Arbitros arbitro;
     
 	@Autowired

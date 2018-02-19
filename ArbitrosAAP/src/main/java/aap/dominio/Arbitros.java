@@ -38,10 +38,11 @@ public class Arbitros implements Serializable{
 	@Autowired
     @Column( name = "fechaCreado")
 	private Date  fechaCreado;
-    
-    @OneToOne 
-  	@JoinColumn (name="idArbitro")
-    @Autowired
+	
+	@Autowired
+    /*@OneToOne 
+  	@JoinColumn (name="idArbitro")*/
+	@OneToOne(mappedBy="arbitro")
   	private Usuarios usuario;
 	
     @Autowired

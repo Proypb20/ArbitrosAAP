@@ -71,12 +71,66 @@
 			<tr>
 					<td align="left">Tipo de Documento</td>
 					<td><frm:select name="tipodoc" class="form-control" style="width: 175px;" path="tipoDocumento">
-						<option selected="selected" value="">Seleccione una opcion</option>
-						<option value="DNI">DNI</option>
-						<option value="PASAPORTE">PASAPORTE</option>
-						<option value="CDI">CDI</option>
-						<option value="CUIT/L">CUIT/L</option>
-						<option value="OTROS">OTROS</option>
+						<c:choose>
+						    <c:when test="${empty usuariom.tipoDocumento}">
+						        <option selected="selected" value="">Seleccione una opcion</option> 
+						        <br />
+						    </c:when>    
+						    <c:otherwise>
+						        <option value="">Seleccione una opcion</option>
+						        <br />
+						    </c:otherwise>
+						</c:choose>
+						<c:choose>
+						    <c:when test="${usuariom.tipoDocumento == 'DNI'}">
+						        <option selected="selected" value="DNI">DNI</option> 
+						        <br />
+						    </c:when>    
+						    <c:otherwise>
+						        <option value="DNI">DNI</option>
+						        <br />
+						    </c:otherwise>
+						</c:choose>
+						<c:choose>
+						    <c:when test="${usuariom.tipoDocumento == 'PASAPORTE'}">
+						        <option selected="selected" value="PASAPORTE">PASAPORTE</option> 
+						        <br />
+						    </c:when>    
+						    <c:otherwise>
+						        <option value="PASAPORTE">PASAPORTE</option>
+						        <br />
+						    </c:otherwise>
+						</c:choose>
+						<c:choose>
+						    <c:when test="${usuariom.tipoDocumento == 'CDI'}">
+						        <option selected="selected" value="CDI">CDI</option> 
+						        <br />
+						    </c:when>    
+						    <c:otherwise>
+						        <option value="CDI">CDI</option>
+						        <br />
+						    </c:otherwise>
+						</c:choose>
+						<c:choose>
+						    <c:when test="${usuariom.tipoDocumento == 'CUIT/L'}">
+						        <option selected="selected" value="CUIT/L">CUIT/L</option> 
+						        <br />
+						    </c:when>    
+						    <c:otherwise>
+						        <option value="CUIT/L">CUIT/L</option>
+						        <br />
+						    </c:otherwise>
+						</c:choose>
+						<c:choose>
+						    <c:when test="${usuariom.tipoDocumento == 'OTROS'}">
+						        <option selected="selected" value="OTROS">OTROS</option> 
+						        <br />
+						    </c:when>    
+						    <c:otherwise>
+						        <option value="OTROS">OTROS</option>
+						        <br />
+						    </c:otherwise>
+						</c:choose>
 					</frm:select></td>
 				</tr>
 			<tr>
@@ -102,31 +156,256 @@
 					<td align="left">Provincia</td>
 					<td>
 					<frm:select name="provincia" class="form-control" style="width: 175px;" path="provincia">
-					    <option selected="selected" value="">Seleccione una opcion</option>
-						<option>Buenos Aires</option>
-						<option>Capital Federal</option>
-						<option>Catamarca</option>
-						<option>Chaco</option>
-						<option>Chubut</option>
-						<option>Cordoba</option>
-						<option>Corrientes</option>
-						<option>Entre Rios</option>
-						<option>Formosa</option>
-						<option>Jujuy</option>
-						<option>La Pampa</option>
-						<option>La Rioja</option>
-						<option>Mendoza</option>
-						<option>Misiones</option>
-						<option>Neuquen</option>
-						<option>Rio Negro</option>
-						<option>Salta</option>
-						<option>San Juan</option>
-						<option>San Luis</option>
-						<option>Santa Cruz</option>
-						<option>Santa Fe</option>
-						<option>Santiago del Estero</option>
-						<option>Tierra del Fuego</option>
-						<option>Tucuman</option>
+					    <c:choose>
+						    <c:when test="${empty usuariom.provincia}">
+						        <option selected="selected" value="">Seleccione una opcion</option> 
+						        <br />
+						    </c:when>    
+						    <c:otherwise>
+						        <option value="">Seleccione una opcion</option>
+						        <br />
+						    </c:otherwise>
+						</c:choose>
+						<c:choose>
+						    <c:when test="${usuariom.provincia == 'Buenos Aires'}">
+						        <option selected="selected" >Buenos Aires</option> 
+						        <br />
+						    </c:when>    
+						    <c:otherwise>
+						        <option>Buenos Aires</option>
+						        <br />
+						    </c:otherwise>
+						</c:choose>
+						<c:choose>
+						    <c:when test="${usuariom.provincia == 'Capital Federal'}">
+						        <option selected="selected" >Capital Federal</option> 
+						        <br />
+						    </c:when>    
+						    <c:otherwise>
+						        <option>Capital Federal</option>
+						        <br />
+						    </c:otherwise>
+						</c:choose>
+						<c:choose>
+						    <c:when test="${usuariom.provincia == 'Catamarca'}">
+						        <option selected="selected" >Catamarca</option> 
+						        <br />
+						    </c:when>    
+						    <c:otherwise>
+						        <option>Catamarca</option>
+						        <br />
+						    </c:otherwise>
+						</c:choose>
+						<c:choose>
+						    <c:when test="${usuariom.provincia == 'Chaco'}">
+						        <option selected="selected" >Chaco</option> 
+						        <br />
+						    </c:when>    
+						    <c:otherwise>
+						        <option>Chaco</option>
+						        <br />
+						    </c:otherwise>
+						</c:choose>
+						<c:choose>
+						    <c:when test="${usuariom.provincia == 'Chubut'}">
+						        <option selected="selected" >Chubut</option> 
+						        <br />
+						    </c:when>    
+						    <c:otherwise>
+						        <option>Chubut</option>
+						        <br />
+						    </c:otherwise>
+						</c:choose>
+						<c:choose>
+						    <c:when test="${usuariom.provincia == 'Cordoba'}">
+						        <option selected="selected" >Cordoba</option> 
+						        <br />
+						    </c:when>    
+						    <c:otherwise>
+						        <option>Cordoba</option>
+						        <br />
+						    </c:otherwise>
+						</c:choose>
+						<c:choose>
+						    <c:when test="${usuariom.provincia == 'Corrientes'}">
+						        <option selected="selected" >Corrientes</option> 
+						        <br />
+						    </c:when>    
+						    <c:otherwise>
+						        <option>Corrientes</option>
+						        <br />
+						    </c:otherwise>
+						</c:choose>
+						<c:choose>
+						    <c:when test="${usuariom.provincia == 'Entre Rios'}">
+						        <option selected="selected" >Entre Rios</option> 
+						        <br />
+						    </c:when>    
+						    <c:otherwise>
+						        <option>Entre Rios</option>
+						        <br />
+						    </c:otherwise>
+						</c:choose>
+						<c:choose>
+						    <c:when test="${usuariom.provincia == 'Formosa'}">
+						        <option selected="selected" >Formosa</option> 
+						        <br />
+						    </c:when>    
+						    <c:otherwise>
+						        <option>Formosa</option>
+						        <br />
+						    </c:otherwise>
+						</c:choose>
+						<c:choose>
+						    <c:when test="${usuariom.provincia == 'Jujuy'}">
+						        <option selected="selected" >Jujuy</option> 
+						        <br />
+						    </c:when>    
+						    <c:otherwise>
+						        <option>Jujuy</option>
+						        <br />
+						    </c:otherwise>
+						</c:choose>
+						<c:choose>
+						    <c:when test="${usuariom.provincia == 'La Pampa'}">
+						        <option selected="selected" >La Pampa</option> 
+						        <br />
+						    </c:when>    
+						    <c:otherwise>
+						        <option>La Pampa</option>
+						        <br />
+						    </c:otherwise>
+						</c:choose>
+						<c:choose>
+						    <c:when test="${usuariom.provincia == 'La Rioja'}">
+						        <option selected="selected" >La Rioja</option> 
+						        <br />
+						    </c:when>    
+						    <c:otherwise>
+						        <option>La Rioja</option>
+						        <br />
+						    </c:otherwise>
+						</c:choose>
+						<c:choose>
+						    <c:when test="${usuariom.provincia == 'Mendoza'}">
+						        <option selected="selected" >Mendoza</option> 
+						        <br />
+						    </c:when>    
+						    <c:otherwise>
+						        <option>Mendoza</option>
+						        <br />
+						    </c:otherwise>
+						</c:choose>
+						<c:choose>
+						    <c:when test="${usuariom.provincia == 'Misiones'}">
+						        <option selected="selected" >Misiones</option> 
+						        <br />
+						    </c:when>    
+						    <c:otherwise>
+						        <option>Misiones</option>
+						        <br />
+						    </c:otherwise>
+						</c:choose>
+						<c:choose>
+						    <c:when test="${usuariom.provincia == 'Neuquen'}">
+						        <option selected="selected" >Neuquen</option> 
+						        <br />
+						    </c:when>    
+						    <c:otherwise>
+						        <option>Neuquen</option>
+						        <br />
+						    </c:otherwise>
+						</c:choose>
+						<c:choose>
+						    <c:when test="${usuariom.provincia == 'Rio Negro'}">
+						        <option selected="selected" >Rio Negro</option> 
+						        <br />
+						    </c:when>    
+						    <c:otherwise>
+						        <option>Rio Negro</option>
+						        <br />
+						    </c:otherwise>
+						</c:choose>
+						<c:choose>
+						    <c:when test="${usuariom.provincia == 'Salta'}">
+						        <option selected="selected" >Salta</option> 
+						        <br />
+						    </c:when>    
+						    <c:otherwise>
+						        <option>Salta</option>
+						        <br />
+						    </c:otherwise>
+						</c:choose>
+						<c:choose>
+						    <c:when test="${usuariom.provincia == 'San Juan'}">
+						        <option selected="selected" >San Juan</option> 
+						        <br />
+						    </c:when>    
+						    <c:otherwise>
+						        <option>San Juan</option>
+						        <br />
+						    </c:otherwise>
+						</c:choose>
+						<c:choose>
+						    <c:when test="${usuariom.provincia == 'San Luis'}">
+						        <option selected="selected" >San Luis</option> 
+						        <br />
+						    </c:when>    
+						    <c:otherwise>
+						        <option>San Luis</option>
+						        <br />
+						    </c:otherwise>
+						</c:choose>
+						<c:choose>
+						    <c:when test="${usuariom.provincia == 'Santa Cruz'}">
+						        <option selected="selected" >Santa Cruz</option> 
+						        <br />
+						    </c:when>    
+						    <c:otherwise>
+						        <option>Santa Cruz</option>
+						        <br />
+						    </c:otherwise>
+						</c:choose>
+						<c:choose>
+						    <c:when test="${usuariom.provincia == 'Santa Fe'}">
+						        <option selected="selected" >Santa Fe</option> 
+						        <br />
+						    </c:when>    
+						    <c:otherwise>
+						        <option>Santa Fe</option>
+						        <br />
+						    </c:otherwise>
+						</c:choose>
+						<c:choose>
+						    <c:when test="${usuariom.provincia == 'Santiago del Estero'}">
+						        <option selected="selected" >Santiago del Estero</option> 
+						        <br />
+						    </c:when>    
+						    <c:otherwise>
+						        <option>Santiago del Estero</option>
+						        <br />
+						    </c:otherwise>
+						</c:choose>
+						<c:choose>
+						    <c:when test="${usuariom.provincia == 'Tierra del Fuego'}">
+						        <option selected="selected" >Tierra del Fuego</option> 
+						        <br />
+						    </c:when>    
+						    <c:otherwise>
+						        <option>Tierra del Fuego</option>
+						        <br />
+						    </c:otherwise>
+						</c:choose>
+						<c:choose>
+						    <c:when test="${usuariom.provincia == 'Tucuman'}">
+						        <option selected="selected" >Tucuman</option> 
+						        <br />
+						    </c:when>    
+						    <c:otherwise>
+						        <option>Tucuman</option>
+						        <br />
+						    </c:otherwise>
+						</c:choose>
 					</frm:select></td>
 				</tr>
 			<tr>

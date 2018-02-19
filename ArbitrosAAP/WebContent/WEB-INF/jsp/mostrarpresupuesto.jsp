@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Asociación Argentina de Paintball | Sitio Oficial de AAP | Presupuesto</title>
+<title>Asociacion Argentina de Paintball | Sitio Oficial de AAP | Presupuesto</title>
 </head>
 <body>
 <header id="headermc">
@@ -42,23 +42,18 @@
 	<table border="1px">
 		<thead>
 			<tr>
+			    <td>ids</td>
+			    <td>Evento</td>
 				<td>Apellido y Nombre</td>
-				<td>Categoria</td>
-				<td>Honorarios</td>
-				<td>Viaticos</td>
-				<td>Firma</td>
 			</tr>
 		</thead>
 		
 			<c:forEach items="${PresupuestoList}" var="presupuesto">
 				
 				<tr>
+				<td>${presupuesto.arbitro.usuario.idUsuario}, ${presupuesto.arbitro.idArbitro}</td>
+				<td>${presupuesto.evento.nombre}</td>
 				<td>${presupuesto.arbitro.usuario.apellido}, ${presupuesto.arbitro.usuario.nombre}</td>
-				<td>${presupuesto.arbitro.categoria.nombre}</td>
-				<td>${presupuesto.arbitro.categoria.honorarios}</td>
-				<td>...............</td>
-				<td>...............</td>
-				
 				</tr>
 				
 			</c:forEach>

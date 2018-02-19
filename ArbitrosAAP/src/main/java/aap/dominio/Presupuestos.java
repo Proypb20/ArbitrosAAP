@@ -65,7 +65,8 @@ public class Presupuestos implements Serializable{
 	@JoinColumn(name="idArbitro") 
     private Arbitros arbitro;
     
-    @Autowired
+
+	@Autowired
 	public Presupuestos ()
 	{
     	estado = "N";

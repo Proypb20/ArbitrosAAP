@@ -42,7 +42,6 @@
 				<value>aap.dominio.TiposUsuario</value>
 				<value>aap.dominio.Categorias</value>
 				<value>aap.dominio.Presupuestos</value>
-				
 			</list>
 		</property>
 		<property name="annotatedPackages">

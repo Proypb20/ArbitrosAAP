@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Asociación Argentina de Paintball | Sitio Oficial de AAP | Presupuesto</title>
+<title>Asociacion Argentina de Paintball | Sitio Oficial de AAP | Presupuesto</title>
 </head>
 <body>
 <header id="headermc">

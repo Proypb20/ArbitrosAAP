@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Asociación Argentina de Paintball | Sitio Oficial de AAP | Presupuesto</title>
+<title>Asociacion Argentina de Paintball | Sitio Oficial de AAP | Presupuesto</title>
 </head>
 <body>
 <header id="headermc">
@@ -41,10 +41,11 @@
     </c:otherwise>
 </c:choose>
 <frm:form action="ListarPres.html" method="post" >
+<frm:hidden path="arbitro.idArbitro" value="${idArbitro}"/>
 <table>
 			<tr>
 				<td align="left">Evento</td>
-				<td><frm:select path="idEvento">
+				<td><frm:select path="evento.idEvento">
 						<frm:options items="${EventoList}" itemLabel="nombre" itemValue="idEvento"/>
 					</frm:select></td>
 			</tr>

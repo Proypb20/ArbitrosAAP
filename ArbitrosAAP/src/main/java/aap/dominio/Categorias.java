@@ -39,6 +39,14 @@ public class Categorias implements Serializable{
     @OneToMany( mappedBy = "categoria", fetch= FetchType.EAGER) 
 	private List<Arbitros> arbitro = new ArrayList<>();
 	
+	public Integer getIdCreado() {
+		return idCreado;
+	}
+
+	public void setIdCreado(Integer idCreado) {
+		this.idCreado = idCreado;
+	}
+
 	@Autowired
 	public Categorias()
 	{
