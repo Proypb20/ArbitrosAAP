@@ -169,9 +169,21 @@ public class ServiceBasico implements Service {
 	}
 	
 	@Override
-	public ArrayList<Presupuestos> obtenerPresupuestos(Integer idEvento)
+	public ArrayList<Presupuestos> obtenerPresupuestos(Integer idUsuario)
 	{
-		return this.dataAccess.obtenerPresupuestos(idEvento);
+		return this.dataAccess.obtenerPresupuestos(idUsuario);
+	}
+	
+	@Override
+	public ArrayList<Presupuestos> obtenerPresupuestosEv(Integer idEvento,Integer idArbitro)
+	{
+		return this.dataAccess.obtenerPresupuestosEv(idEvento,idArbitro);
+	}
+	
+	@Override
+	public ArrayList<Presupuestos> obtenerPresupuestosA(Integer idArbitro)
+	{
+		return this.dataAccess.obtenerPresupuestosA(idArbitro);
 	}
 	
 	@Override

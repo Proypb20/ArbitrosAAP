@@ -101,22 +101,35 @@ public class TournamentController {
 	}
 	
 	@RequestMapping(value = "MostrarPresupuestosN.html")
-	public ModelAndView ListarPresupuestosN()
+	public ModelAndView ListarPresupuestosN(HttpServletRequest request)
 	{
 		ModelAndView MV = new ModelAndView();
-		Eventos evento = new Eventos();
-		MV.addObject("command",evento);
+		MV.addObject("command",new Presupuestos());
 		List<Eventos> eventos = service.obtenerEventos();
 		MV.addObject("EventoList", eventos);
+		HttpSession session = request.getSession();
+		MV.addObject("idArbitro",service.obteneridArbitro((Integer) session.getAttribute("IdU")));
 		MV.setViewName("mostrarpresupuestoE");
 		return MV;
 	}
 	
-	@RequestMapping(value = "ListarPres.html")
-	public ModelAndView ListarPresupuestos(Eventos evento)
+	@RequestMapping(value = "MostrarPresupuestosT.html")
+	public ModelAndView ListarPresupuestosT(HttpServletRequest request)
 	{
 		ModelAndView MV = new ModelAndView();
-		List<Presupuestos> presupuesto = service.obtenerPresupuestos(evento.getIdEvento());
+		HttpSession session = request.getSession();
+		List<Presupuestos> presupuesto = service.obtenerPresupuestosA(service.obteneridArbitro((Integer) session.getAttribute("IdU")));
+		MV.addObject("PresupuestoList", presupuesto);
+		MV.setViewName("mostrarpresupuesto");
+		return MV;
+	}
+	
+	@RequestMapping(value = "ListarPres.html")
+	public ModelAndView ListarPresupuestos(Presupuestos presu)
+	{
+		ModelAndView MV = new ModelAndView();
+		List<Presupuestos> presupuesto = service.obtenerPresupuestosEv(presu.getEvento().getIdEvento()
+				                                                      ,presu.getArbitro().getIdArbitro());
 		MV.addObject("PresupuestoList", presupuesto);
 		MV.setViewName("mostrarpresupuesto");
 		return MV;
