@@ -9,6 +9,18 @@
 <title>Asociacion Argentina de Paintball | Sitio Oficial de AAP | Crear Evento</title>
 </head>
 <body>
+<header id="headermc">
+				<div class="logo">
+         			<a href="http://www.aapaintball.com.ar/" id="logo"><img src="http://www.aapaintball.com.ar/wp-content/uploads/2011/07/logo-aap-paintball-2016-1.png" alt="Asociacion Argentina de Paintball" title="Sitio Oficial de AAP"></a>
+                </div>
+				<div class="clear"></div>
+				<div id="widget-header">
+				</div><!--#widget-header-->
+				<div class="clear"></div>
+				<div class="row-top">
+			    <div class="clear"></div>
+				</div>
+</header>
 <h2>Bienvenido ${IdName}</h2>
 <c:if test="${empty idTu}">
        <c:set var = "idTu" scope = "session" value = "${idTypeUser}"/>
@@ -50,8 +62,8 @@
 				<td><input type="submit" value="Guardar" name="btnguardar">
 				</td>
 				<td><input type="reset" value="Limpiar"></td>
-				<td><input type="button" value="Cancelar"
-					onclick="javascript:history.go(-1)"></td>
+<!-- 				<td><input type="button" value="Cancelar" -->
+<!-- 					onclick="javascript:history.go(-1)"></td> -->
 			</tr>
 		</table>
 	</frm:form>
