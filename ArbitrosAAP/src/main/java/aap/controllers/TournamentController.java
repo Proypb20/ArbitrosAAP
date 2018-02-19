@@ -88,8 +88,9 @@ public class TournamentController {
 		return MV;
 	}
 
-	@RequestMapping(value ="/Inscribir.html" , method= {RequestMethod.POST})
-	public ModelAndView InscribirArbitros(Presupuestos presupuesto,HttpServletRequest request){
+	@RequestMapping(value ="Inscribir.html" , method= {RequestMethod.POST})
+	public ModelAndView InscribirArbitros(Presupuestos presupuesto,HttpServletRequest request)
+	{
 		ModelAndView MV = new ModelAndView();
 		HttpSession session = request.getSession();
 		presupuesto.setIdCreado((Integer) session.getAttribute("IdU"));

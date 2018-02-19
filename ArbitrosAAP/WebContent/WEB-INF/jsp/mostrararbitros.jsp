@@ -68,6 +68,6 @@
 				
 			</c:forEach>
     </table>
-	<input type="button" value="Volver"  onclick="javascript:history.go(-1)"> 
+<!-- 	<input type="button" value="Volver"  onclick="javascript:history.go(-1)">  -->
 </body>
 </html>

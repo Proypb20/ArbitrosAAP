@@ -10,7 +10,6 @@
 <script>
 function getId()
 {
-	a = document.forms["modifyuser"]["idCategoria"].label;
 	document.getElementById("nombre").value =document.getElementById('idCategoria')[document.getElementById('idCategoria').selectedIndex].innerHTML;
 }
 function validId()
