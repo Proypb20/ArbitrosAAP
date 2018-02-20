@@ -1,17 +1,13 @@
 <%@ page import="aap.servicio.*"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="frm" %>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <%@ page language='java' contentType='text/html' isErrorPage='false' errorPage='error.jsp' %>
-<title>Asociación Argentina de Paintball | Sitio Oficial de AAP | Inscripcion a eventos</title>
+<title>Asociacion Argentina de Paintball | Sitio Oficial de AAP | Inscripcion a eventos</title>
 <head>
-    <spring:url value="/resources/css/main.css" var="mainCss" />
-	<spring:url value="/resources/js/jquery.1.10.2.min.js" var="jqueryJs" />
-	<spring:url value="/resources/js/main.js" var="mainJs" />
-
-	<link href="${mainCss}" rel="stylesheet" />
-    <script src="${jqueryJs}"></script>
-    <script src="${mainJs}"></script>
+      <link href="<c:url value="/resources/theme/css/main.css" />" rel="stylesheet"> 
+     <script src="<c:url value="/resources/js/jquery.1.10.2.min.js" />"></script>
+     <script src="<c:url value="/resources/js/main.js" />"></script>
 </head>
 <header id="header">
 				<div class="logo">
