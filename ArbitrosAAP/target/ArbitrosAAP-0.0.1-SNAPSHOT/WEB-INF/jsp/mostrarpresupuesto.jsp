@@ -45,8 +45,6 @@
 			    <td>ids</td>
 			    <td>Evento</td>
 				<td>Apellido y Nombre</td>
-				<td>Categoria</td>
-				<td>Honorarios</td>
 			</tr>
 		</thead>
 		
@@ -56,8 +54,6 @@
 				<td>${presupuesto.arbitro.usuario.idUsuario}, ${presupuesto.arbitro.idArbitro}</td>
 				<td>${presupuesto.evento.nombre}</td>
 				<td>${presupuesto.arbitro.usuario.apellido}, ${presupuesto.arbitro.usuario.nombre}</td>
-				<td>${presupuesto.arbitro.categoria.nombre}</td>
-				<td>${presupuesto.arbitro.categoria.honorarios}</td>
 				</tr>
 				
 			</c:forEach>

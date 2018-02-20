@@ -1,9 +1,13 @@
 <%@ page import="aap.servicio.*"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="frm" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <%@ page language='java' contentType='text/html' isErrorPage='false' errorPage='error.jsp' %>
 <title>Asociación Argentina de Paintball | Sitio Oficial de AAP | Inscripcion a eventos</title>
 <head>
+     <link href="<c:url value="/resources/css/main.css" />" rel="stylesheet">
+     <script src="<c:url value="/resources/js/jquery.1.10.2.min.js" />"></script>
+     <script src="<c:url value="/resources/js/main.js" />"></script>
 </head>
 <header id="header">
 				<div class="logo">
@@ -17,8 +21,8 @@
 			    <div class="clear"></div>
 				</div>
 </header>
-<h2>  </h2>
 <body>
+<h1>${pageContext.request.contextPath}</h1>
 				<frm:form action="BuscarUsuario.html">
 					<table>
 	  				<tr> 
