@@ -26,9 +26,6 @@
 				</div>
 </header>
 <body>
-<h1>${pageContext.request.contextPath}</h1>
-
-<div id="msg"></div>
 				<frm:form action="BuscarUsuario.html">
 					<table>
 	  				<tr> 
