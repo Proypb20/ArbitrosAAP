@@ -1,13 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="frm" %>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Asociacion Argentina de Paintball | Sitio Oficial de AAP | Crear Usuario</title>
-</head>
-<body>
 <script>
 function validation() {
    var x = document.forms["createusers"]["username"].value;
@@ -58,8 +54,21 @@ function validation() {
     return true;
 }
 </script>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Asociacion Argentina de Paintball | Sitio Oficial de AAP | Crear Usuario</title>
+<spring:url value="/resources/css/main.css" var="mainCss" />
+	<spring:url value="/resources/js/jquery.1.10.2.min.js" var="jqueryJs" />
+	<spring:url value="/resources/js/main.js" var="mainJs" />
 
-<header id="headermc">
+	<link href="${mainCss}" rel="stylesheet"  type="text/css"/>
+    <script src="${jqueryJs}"></script>
+    <script src="${mainJs}"></script>
+</head>
+<body>
+<div class="cont">
+<div id="main">
+<header id="header">
 				<div class="logo">
          			<a href="http://www.aapaintball.com.ar/" id="logo"><img src="http://www.aapaintball.com.ar/wp-content/uploads/2011/07/logo-aap-paintball-2016-1.png" alt="Asociaci�n Argentina de Paintball" title="Sitio Oficial de AAP"></a>
                 </div>
@@ -196,5 +205,6 @@ function validation() {
 			    </table>
 			    ${Mensaje}
 			    </frm:form>
+			    </div></div>
 </body>
 </html>

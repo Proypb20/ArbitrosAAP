@@ -13,6 +13,8 @@
     <script src="${mainJs}"></script>
 </head>
 <body>
+<div class="cont">
+<div id="main">
 <header id="header">
 				<div class="logo">
          			<a href="http://www.aapaintball.com.ar/" id="logo"><img src="http://www.aapaintball.com.ar/wp-content/uploads/2011/07/logo-aap-paintball-2016-1.png" alt="Asociaci�n Argentina de Paintball" title="Sitio Oficial de AAP"></a>
@@ -45,5 +47,7 @@
     </c:otherwise>
 </c:choose>
 ${Mensaje}
+</div>
+</div>
 </body>
 </html>

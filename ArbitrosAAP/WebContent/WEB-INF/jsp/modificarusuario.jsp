@@ -2,14 +2,24 @@
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="frm" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Asociacion Argentina de Paintball | Sitio Oficial de AAP | Mi Perfil</title>
+<spring:url value="/resources/css/main.css" var="mainCss" />
+	<spring:url value="/resources/js/jquery.1.10.2.min.js" var="jqueryJs" />
+	<spring:url value="/resources/js/main.js" var="mainJs" />
+
+	<link href="${mainCss}" rel="stylesheet"  type="text/css"/>
+    <script src="${jqueryJs}"></script>
+    <script src="${mainJs}"></script>
 </head>
 <body>
-<header id="headermc">
+<div class="cont">
+<div id="main">
+<header id="header">
 				<div class="logo">
          			<a href="http://www.aapaintball.com.ar/" id="logo"><img src="http://www.aapaintball.com.ar/wp-content/uploads/2011/07/logo-aap-paintball-2016-1.png" alt="Asociacion Argentina de Paintball" title="Sitio Oficial de AAP"></a>
                 </div>
@@ -406,6 +416,16 @@
 						        <br />
 						    </c:otherwise>
 						</c:choose>
+						<c:choose>
+						    <c:when test="${usuariom.provincia == 'Otros'}">
+						        <option selected="selected" >Otros</option> 
+						        <br />
+						    </c:when>    
+						    <c:otherwise>
+						        <option>Otros</option>
+						        <br />
+						    </c:otherwise>
+						</c:choose>
 					</frm:select></td>
 				</tr>
 			<tr>
@@ -423,16 +443,15 @@
 				<td><frm:input name="email" id="email" class="input" value=""
 						size="25" type="email" path="email" /></td>
 			</tr>
-			<tr>
-				<td><input type="submit" value="Guardar" name="btnguardar">
-				</td>
-				<td><input type="reset" value="Limpiar"></td>
-<!-- 				<td><input type="button" value="Cancelar" -->
-<!-- 					onclick="javascript:history.go(-1)"></td> -->
-			</tr>
-
 		</table>
+			<div> </div>
+				<div><input type="submit" value="Guardar" name="btnguardar">
+				<input type="reset" value="Limpiar"></div>
+			
+
+		
 			    ${Mensaje}
 			    </frm:form>
+			    </div></div>
 </body>
 </html>
