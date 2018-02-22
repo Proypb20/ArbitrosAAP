@@ -32,6 +32,9 @@
   <servlet-mapping>
 	<servlet-name>spring</servlet-name>
 	<url-pattern>*.html</url-pattern>
+	<url-pattern>*.htm</url-pattern>
+    <url-pattern>*.css</url-pattern>
+    <url-pattern>*.js</url-pattern>
   </servlet-mapping>
   
    <welcome-file-list>

@@ -12,11 +12,12 @@
 	    <property name="suffix" value=".jsp"></property>
     </bean>
     
+    
    
 <context:component-scan base-package="aap">
 </context:component-scan>
 
-<mvc:resources mapping="/resources/**" location="/WEB-INF/resources/theme1/" />
+<mvc:resources mapping="/resources/**" location="/WEB-INF/resources/theme/" />
 
 <mvc:annotation-driven />
 

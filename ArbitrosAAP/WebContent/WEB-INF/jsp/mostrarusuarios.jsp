@@ -60,6 +60,7 @@
 				<td>Provincia</td>
 				<td>Telefono</td>
 				<td>Email</td>
+				<td>Nro Arbitro</td>
 			</tr>
 		</thead>
 		
@@ -75,6 +76,7 @@
 				<td>${usuarios.provincia}</td>
 				<td>${usuarios.telefono}</td>
 				<td>${usuarios.email}</td>
+				<td>${usuarios.arbitro.nroArbitro}</td>
 				
 				</tr>
 				

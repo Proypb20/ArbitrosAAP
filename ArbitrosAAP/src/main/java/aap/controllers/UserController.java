@@ -16,6 +16,7 @@ import org.springframework.web.context.support.WebApplicationContextUtils;
 import org.springframework.web.servlet.ModelAndView;
 import aap.dominio.Usuarios;
 import aap.dominio.Arbitros;
+import aap.dominio.Categorias;
 import aap.dominio.TiposUsuario;
 import aap.servicio.Service;
 
@@ -38,6 +39,9 @@ public class UserController {
 		ModelAndView MV = new ModelAndView();
 		MV.addObject("command", new Usuarios());
 		List<TiposUsuario> tipousuarios = service.obtenerTipoUsuario();
+		TiposUsuario tiposuario = new TiposUsuario();
+		tiposuario.setNombre("Seleccione un Tipo Usuario");
+		tipousuarios.add(0,tiposuario);
 		MV.addObject("TipoUsuarioList", tipousuarios);
 		MV.setViewName("crearuser");
 		return MV;
@@ -64,11 +68,21 @@ public class UserController {
 		
 		if ( usuario != null)
 		{
-			MV.setViewName("inicio");			 
-			HttpSession session = request.getSession();
-			session.setAttribute("IdU", usuario.getIdUsuario());
-			session.setAttribute("idTu", usuario.getTipousuario().getIdTipoUsuario());
-			session.setAttribute("IdName", usuario.getApellido() + ", " + usuario.getNombre());
+			if ((usuario.getArbitro() == null && usuario.getTipousuario().getIdTipoUsuario() == 3)
+				|| (usuario.getTipousuario() == null))
+			{
+				MV.setViewName("index");
+				MV.addObject("Mensaje", "no tiene permisos para acceder");
+				MV.addObject("command", new Usuarios());
+			}
+			else
+			{
+				MV.setViewName("inicio");			 
+				HttpSession session = request.getSession();
+				session.setAttribute("IdU", usuario.getIdUsuario());
+				session.setAttribute("idTu", usuario.getTipousuario().getIdTipoUsuario());
+				session.setAttribute("IdName", usuario.getApellido() + ", " + usuario.getNombre());
+			}
 		}
 		else
 		{
@@ -83,7 +97,7 @@ public class UserController {
 		{
 			nombre = e.getMessage();
 			MV.setViewName("index");
-			MV.addObject("Mensaje", nombre);
+			MV.addObject("Mensaje", "Error:" + nombre);
 			MV.addObject("command", new Usuarios());
 			return MV;
 		}
@@ -128,8 +142,8 @@ public class UserController {
 	}
 	@RequestMapping(value ="/GuardarUsuario" , method= {RequestMethod.POST})
 	public ModelAndView GuardarUsuario(Usuarios user,
-			       @RequestParam(value="arbitra", required=false) String arbitra,
-			       @RequestParam(value="nroarb", required=false) String NroArbitro,
+//			       @RequestParam(value="arbitra", required=false) String arbitra,
+//			       @RequestParam(value="nroarb", required=false) String NroArbitro,
 			       HttpServletRequest request)
 	{
 		ModelAndView MV = new ModelAndView();
@@ -147,13 +161,13 @@ public class UserController {
 					 }
 			 else
 			 {
-				if (arbitra!="N")
+				/*if (arbitra!="N")
 				{
 					Arbitros arbitro = new Arbitros();
 					arbitro.setNroArbitro(Integer.parseInt(NroArbitro));
 					user.setArbitro(arbitro);
 					mensaje = "Arbitro creado con Exito";
-				}
+				}*/
 				service.insertarUsuario(user);
 			    mensaje = "Usuario creado con Exito";
 				MV.addObject("command", new Usuarios());
