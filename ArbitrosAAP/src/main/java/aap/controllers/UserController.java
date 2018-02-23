@@ -11,12 +11,9 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 import org.springframework.web.servlet.ModelAndView;
 import aap.dominio.Usuarios;
-import aap.dominio.Arbitros;
-import aap.dominio.Categorias;
 import aap.dominio.TiposUsuario;
 import aap.servicio.Service;
 

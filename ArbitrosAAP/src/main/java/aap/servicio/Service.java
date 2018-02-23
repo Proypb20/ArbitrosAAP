@@ -83,7 +83,9 @@ public interface Service {
 	
 	ArrayList<Presupuestos> obtenerPresupuestos(Integer idUsuario);
 	
-	ArrayList<Presupuestos> obtenerPresupuestosEv(Integer idEvento,Integer idArbitro);
+	ArrayList<Presupuestos> obtenerPresupuestosEv(Integer idEvento);
+	
+	ArrayList<Presupuestos> obtenerPresupuestosEA(Integer idEvento,Integer idArbitro);
 	
 	ArrayList<Presupuestos> obtenerPresupuestosA(Integer idArbitro);
 	

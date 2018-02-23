@@ -52,6 +52,7 @@
 </c:choose>
 <frm:form name="inscripto" action="Inscribir.html" method="post">
 <form:hidden path="arbitro.idArbitro" value="${idArbitro}"/>
+<form:hidden path="idCat" value="${idCategoria}"/>
 <table>
 				 <tr>
 					<td align="left">Torneo</td>
@@ -74,8 +75,16 @@
 						<option value=1>Poseo Vehiculo-Puedo llevar gente</option>
 						<option value=0>Viajo por mis propios medios</option>
 					</frm:select></td>
+			    </tr>
 			    <tr>
-			    	<td> <input type="submit" value="Aceptar" onclick="validate()"> </td>
+					<td align="left">Desea ser Arbitro Mayor</td>
+					<td><frm:select name="mayor" class="form-control" style="width: 175px;" path="mayor">
+						<option selected="selected" value="N">No</option>
+						<option value="Y">SI</option>
+					</frm:select></td>
+			    </tr>
+			    <tr>
+			    	<td> <input type="submit" value="Aceptar"> </td>
 			        <td> <input type="reset" value="Limpiar"> </td>
 <!-- 			        <td> <input type="button" value="Cancelar"  onclick="javascript:history.go(-1)"> </td> -->
 			    </tr>

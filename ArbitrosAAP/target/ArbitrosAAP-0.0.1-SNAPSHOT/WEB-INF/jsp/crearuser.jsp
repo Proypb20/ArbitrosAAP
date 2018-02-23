@@ -51,7 +51,24 @@ function validation() {
         alert("El Pais no puede estar vacio");
         return false;
     }
+    x = document.forms["createusers"]["tipou"].value;
+    if (x == 0) {
+        alert("Debe seleccionar un tipo de usuario");
+        return false;
+    }
     return true;
+}
+function mostrararb()
+{
+	 if (document.forms["createusers"]["tipou"].value == 3) {
+	        document.getElementById('nroarb').style.visibility = 'visible';
+	    } else {
+	        document.getElementById('nroarb').style.visibility = 'hidden';
+	    }
+}
+function onloadarb()
+{
+	document.getElementById('nroarb').style.visibility = 'hidden';
 }
 </script>
 <head>
@@ -119,7 +136,7 @@ function validation() {
 				</tr>
 				<tr>
 					<td align="left">Tipo de Documento</td>
-					<td><frm:select name="tipodoc" class="form-control" style="width: 175px;" path="tipoDocumento">
+					<td><frm:select name="tipodoc" class="form-control" style="width: 180px;" type="option" path="tipoDocumento">
 						<option selected="selected" value="">Seleccione una opcion</option>
 						<option value="DNI">DNI</option>
 						<option value="PASAPORTE">PASAPORTE</option>
@@ -142,7 +159,7 @@ function validation() {
 				</tr>
 				<tr>
 					<td align="left">Provincia</td>
-					<td><frm:select name="provincia" class="form-control" style="width: 175px;" path="provincia">
+					<td><frm:select name="provincia" class="form-control" style="width: 180px;" path="provincia">
 					    <option selected="selected" value="">Seleccione una opcion</option>
 						<option>Buenos Aires</option>
 						<option>Capital Federal</option>
@@ -168,6 +185,7 @@ function validation() {
 						<option>Santiago del Estero</option>
 						<option>Tierra del Fuego</option>
 						<option>Tucuman</option>
+						<option>Otros</option>
 					</frm:select></td>
 				</tr>
 				<tr>
@@ -185,15 +203,11 @@ function validation() {
 				<tr>
 				<tr>
 					<td align="left">Tipo Usuario</td>
-					<td><frm:select path="tipousuario.idTipoUsuario">
+					<td><frm:select id="tipou" path="tipousuario.idTipoUsuario" class="form-control" style="width: 180px;" onchange="mostrararb()">
 							<frm:options items="${TipoUsuarioList}" itemLabel="nombre" itemValue="idTipoUsuario"/>
 						</frm:select></td>
-				</tr>
-				<tr>
-					<td align="left">Arbitra</td>
-			    	<td><input type="checkbox" name="arbitra" value="Y" Checked><BR></td>
-			    	<td>Nro Arbitro: </td>
-			    	<td><input name="nroarb" id="nroarb" class="input" value="" size="25"/>
+			         <td><frm:input name="nroarb" id="nroarb" class="input" type="text" size="25" path="arbitro.nroArbitro" style="visibility:hidden;" value="Ingrese Nro Arbitro" onblur="if(this.value==''){ this.value='Ingrese Nro Arbitro';}"
+  onfocus="if(this.value=='Ingrese Nro Arbitro'){ this.value='';}"/>
 				</tr>
 				</table>
 				<table>

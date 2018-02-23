@@ -32,8 +32,8 @@ public class Presupuestos implements Serializable{
 	private int idPresupuesto;
 	
 	@Autowired
-	@Column( name = "dia")
-	private int dia;
+	@Column( name = "idCat")
+	private int idCat;
 	
 	@Autowired
 	@Column( name = "mayor")
@@ -84,13 +84,13 @@ public class Presupuestos implements Serializable{
 	}
 
     @Autowired
-	public int getDia() {
-		return dia;
+	public int getidCat() {
+		return idCat;
 	}
 
     @Autowired
-	public void setDia(int dia) {
-		this.dia = dia;
+	public void setidCat(int idCat) {
+		this.idCat = idCat;
 	}
 
     @Autowired

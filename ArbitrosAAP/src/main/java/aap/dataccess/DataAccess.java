@@ -79,7 +79,9 @@ public interface DataAccess {
 	
 	ArrayList<Presupuestos> obtenerPresupuestosE(String Estado);
 	
-	ArrayList<Presupuestos> obtenerPresupuestosEv(Integer idEvento,Integer idArbitro);
+	ArrayList<Presupuestos> obtenerPresupuestosEA(Integer idEvento,Integer idArbitro);
+	
+	ArrayList<Presupuestos> obtenerPresupuestosEv(Integer idEvento);
 	
 	ArrayList<Presupuestos> obtenerPresupuestosA(Integer idArbitro);
 	

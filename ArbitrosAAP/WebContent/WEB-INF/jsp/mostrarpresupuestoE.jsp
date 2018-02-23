@@ -51,7 +51,6 @@
     </c:otherwise>
 </c:choose>
 <frm:form action="ListarPres.html" method="post" >
-<frm:hidden path="arbitro.idArbitro" value="${idArbitro}"/>
 <table>
 			<tr>
 				<td align="left">Evento</td>

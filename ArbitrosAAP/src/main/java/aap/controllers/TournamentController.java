@@ -17,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 import aap.dominio.Eventos;
 import aap.dominio.Presupuestos;
 import aap.dominio.Torneos;
+import aap.dominio.Usuarios;
 import aap.servicio.Service;
 
 @Controller
@@ -77,14 +78,33 @@ public class TournamentController {
 	@RequestMapping("Inscribirse.html")
 	public ModelAndView redireccionins(HttpServletRequest request){
 		ModelAndView MV = new ModelAndView();
+		HttpSession session = request.getSession();
+		Usuarios user = service.obtenerUsuario((Integer) session.getAttribute("IdU"));
+		if (user.getArbitro().getCategoria() == null)
+		{
+			MV.setViewName("inicio");
+			MV.addObject("Mensaje", "No se encuentra categorizado");
+			
+		}
+		else
+		{
 		MV.addObject("command",new Presupuestos());
 		List<Torneos> torneo = service.obtenerTorneos();
+		Torneos torneo1 = new Torneos();
+		torneo1.setNombre("Seleccione Torneo");
+		torneo.add(0,torneo1);
 		MV.addObject("TorneoList", torneo);
 		List<Eventos> evento = service.obtenerEventos();
+		Eventos evento1 = new Eventos();
+		evento1.setNombre("Seleccione Evento");
+		evento.add(0,evento1);
 		MV.addObject("EventoList", evento);
-		HttpSession session = request.getSession();
-		MV.addObject("idArbitro",service.obteneridArbitro((Integer) session.getAttribute("IdU")));
+		Usuarios user1 = new Usuarios();
+		user1 = service.obtenerUsuario((Integer) session.getAttribute("IdU"));
+		MV.addObject("idArbitro",user1.getArbitro().getIdArbitro());
+		MV.addObject("idCategoria",user1.getArbitro().getCategoria().getIdCategoria());
 		MV.setViewName("inscripcion");
+		}
 		return MV;
 	}
 
@@ -100,15 +120,32 @@ public class TournamentController {
 		return MV;
 	}
 	
-	@RequestMapping(value = "MostrarPresupuestosN.html")
+	@RequestMapping(value = "MostrarPresupuestosEA.html")
 	public ModelAndView ListarPresupuestosN(HttpServletRequest request)
 	{
 		ModelAndView MV = new ModelAndView();
 		MV.addObject("command",new Presupuestos());
 		List<Eventos> eventos = service.obtenerEventos();
+		Eventos evento = new Eventos();
+		evento.setNombre("Seleccione Evento");
+		eventos.add(0,evento);
 		MV.addObject("EventoList", eventos);
 		HttpSession session = request.getSession();
 		MV.addObject("idArbitro",service.obteneridArbitro((Integer) session.getAttribute("IdU")));
+		MV.setViewName("mostrarpresupuestoEA");
+		return MV;
+	}
+	
+	@RequestMapping(value = "MostrarPresupuestosN.html")
+	public ModelAndView ListarPresupuestosN()
+	{
+		ModelAndView MV = new ModelAndView();
+		MV.addObject("command",new Presupuestos());
+		List<Eventos> eventos = service.obtenerEventos();
+		Eventos evento = new Eventos();
+		evento.setNombre("Seleccione Evento");
+		eventos.add(0,evento);
+		MV.addObject("EventoList", eventos);
 		MV.setViewName("mostrarpresupuestoE");
 		return MV;
 	}
@@ -124,12 +161,21 @@ public class TournamentController {
 		return MV;
 	}
 	
+	@RequestMapping(value = "ListarPresEA.html")
+	public ModelAndView ListarPresupuestosEA(Presupuestos presu)
+	{
+		ModelAndView MV = new ModelAndView();
+		List<Presupuestos> presupuesto = service.obtenerPresupuestosEA(presu.getEvento().getIdEvento()
+				                                                      ,presu.getArbitro().getIdArbitro());
+		MV.addObject("PresupuestoList", presupuesto);
+		MV.setViewName("mostrarpresupuesto");
+		return MV;
+	}
 	@RequestMapping(value = "ListarPres.html")
 	public ModelAndView ListarPresupuestos(Presupuestos presu)
 	{
 		ModelAndView MV = new ModelAndView();
-		List<Presupuestos> presupuesto = service.obtenerPresupuestosEv(presu.getEvento().getIdEvento()
-				                                                      ,presu.getArbitro().getIdArbitro());
+		List<Presupuestos> presupuesto = service.obtenerPresupuestosEv(presu.getEvento().getIdEvento());
 		MV.addObject("PresupuestoList", presupuesto);
 		MV.setViewName("mostrarpresupuesto");
 		return MV;

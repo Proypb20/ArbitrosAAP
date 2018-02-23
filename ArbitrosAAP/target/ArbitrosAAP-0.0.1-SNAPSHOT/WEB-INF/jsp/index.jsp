@@ -32,11 +32,11 @@
 					<table>
 	  				<tr> 
 	  					<td> Usuario:</td>
-	  					<td> <frm:input path="usuario"/> </td>
+	  					<td> <frm:input id="usuario" class="input" type="text" path="usuario"/> </td>
 	  				</tr>
 	  				<tr>
 	  					<td> Contraseña: </td>
-	  					<td> <frm:input path="contrasena" type="password"/> </td>
+	  					<td> <frm:input id="password" class="input" path="contrasena" type="password"/> </td>
 	       			</tr>
 	       			<tr> </tr>
 	  				<tr>

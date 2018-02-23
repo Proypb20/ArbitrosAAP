@@ -49,29 +49,36 @@
         <br />
     </c:otherwise>
 </c:choose>
-	<table border="1px">
+	<table border="5px">
 		<thead>
 			<tr>
-			    <td>Torneo</td>
-			    <td>Evento</td>
-				<td>Apellido y Nombre</td>
-				<td>Categoria</td>
-				<td>Monto</td>
+			    <td style="width:200px; height:10px" align="center">Torneo</td>
+			    <td style="width:200px; height:10px" align="center">Evento</td>
+				<td style="width:200px; height:10px" align="center">Apellido y Nombre</td>
+				<td style="width:200px; height:10px" align="center">Categoria</td>
+				<td style="width:200px; height:10px" align="center">Monto</td>
 			</tr>
 		</thead>
-		
+		    <c:set var="total" value="${0}"/>
 			<c:forEach items="${PresupuestoList}" var="presupuesto">
 				
 				<tr>
 				<td>${presupuesto.evento.torneo.nombre}</td>
 				<td>${presupuesto.evento.nombre}</td>
 				<td>${presupuesto.arbitro.usuario.apellido}, ${presupuesto.arbitro.usuario.nombre}</td>
-				<td>${presupuesto.arbitro.categoria.nombre}</td>
-				<td>${presupuesto.arbitro.categoria.honorarios}</td>
+ 				<td>${presupuesto.arbitro.categoria.nombre}</td> 
+				<td  align="right">${presupuesto.arbitro.categoria.honorarios}</td>
 				</tr>
-				
+				 <c:set var="total" value="${total + presupuesto.arbitro.categoria.honorarios}" />
 			</c:forEach>
-	</table>
+			<tr>
+			<td>Total:</td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td align="right">${total}</td>
+			</tr>
+	</table>	
 </div></div>
 </body>
 </html>

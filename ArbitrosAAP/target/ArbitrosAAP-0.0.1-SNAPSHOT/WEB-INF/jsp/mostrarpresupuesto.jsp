@@ -52,16 +52,22 @@
 	<table border="1px">
 		<thead>
 			<tr>
+			    <td>Torneo</td>
 			    <td>Evento</td>
 				<td>Apellido y Nombre</td>
+				<td>Categoria</td>
+				<td>Monto</td>
 			</tr>
 		</thead>
 		
 			<c:forEach items="${PresupuestoList}" var="presupuesto">
 				
 				<tr>
+				<td>${presupuesto.evento.torneo.nombre}</td>
 				<td>${presupuesto.evento.nombre}</td>
 				<td>${presupuesto.arbitro.usuario.apellido}, ${presupuesto.arbitro.usuario.nombre}</td>
+				<td>${presupuesto.arbitro.categoria.nombre}</td>
+				<td>${presupuesto.arbitro.categoria.honorarios}</td>
 				</tr>
 				
 			</c:forEach>
