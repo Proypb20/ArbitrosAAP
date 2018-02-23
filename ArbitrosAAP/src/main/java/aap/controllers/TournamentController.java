@@ -130,7 +130,7 @@ public class TournamentController {
 		return MV;
 	}
 	
-	@RequestMapping(value = "MostrarPresupuestosEA.html")
+	@RequestMapping(value = "MostrarPresupuestosAE.html")
 	public ModelAndView ListarPresupuestosN(HttpServletRequest request)
 	{
 		ModelAndView MV = new ModelAndView();
