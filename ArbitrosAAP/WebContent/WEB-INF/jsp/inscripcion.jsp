@@ -9,7 +9,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Asociacion Argentina de Paintball | Sitio Oficial de AAP | Inscripcion</title>
 <spring:url value="/resources/css/main.css" var="mainCss" />
-	<spring:url value="/resources/js/jquery.1.10.2.min.js" var="jqueryJs" />
+	<spring:url value="/resources/theme/js/jquery.1.10.2.min.js" var="jqueryJs" />
 	<spring:url value="/resources/js/main.js" var="mainJs" />
 
 	<link href="${mainCss}" rel="stylesheet"  type="text/css"/>
@@ -21,21 +21,39 @@
 $(document).ready(function() { 
 	$('#TorneoDDL').change(
 		function() {
-			$.getJSON('${findEventosURL}', {
-				idTorneos : $(this).val(),
-				ajax : 'true'
-			}, function(data) {
-				var html = '<option value="0">Seleccione Evento...</option>';
-				var len = data.length;
-				for ( var i = 0; i < len; i++) {
-					html += '<option value="' + data[i].idEvento + '">'
-							+ data[i].nombre + '</option>';
-				}
-				html += '</option>';
- 
-				$('#EventoDDL').html(html);
-			});
-		});
+// 			$.getJSON('${findEventosURL}', {
+// 				idTorneos : $(this).val(),
+// 				ajax : 'true'
+// 			}, function(data) {
+// 				alert(data[0].idEvento);
+// // 				var html = '<option value="0">Seleccione Evento...</option>';
+// // 				html += '<option value="' + data[0].idEvento + '">'
+// // 					+ data[0].nombre + '</option>';
+// // 				var len = data.length;
+// // 				var len = 10;
+// // 				for ( var i = 0; i < len; i++) {
+// //  					html += '<option value="' + data[i].idEvento + '">'
+// //  							+ data[i].nombre + '</option>';
+// // 				}
+// //  				html += '</option>';
+// 				//$('#EventoDDL').html(html);
+// 			});
+			$.ajax({    
+				   url: '${findEventosURL}',
+				   type: 'POST',
+				   dataType: 'json',
+				   data: JSON.stringify(json),
+				   contentType: 'application/json; charset=utf-8',
+				   success: function (data) {
+					 var html = '<option value="0">Seleccione Evento...</option>';
+				     for (var i in data){
+				    	 html += '<option value="' + data[i].idEvento + '">'
+				    	  							+ data[i].nombre + '</option>';
+				    	 				}
+// 				    	  				html += '</option>';
+				   }
+				   });
+		})
 });
 </script>
 <body>
@@ -90,7 +108,7 @@ $(document).ready(function() {
 <%-- 						<frm:options items="${EventoList}"  itemLabel="nombre" itemValue="idEvento"/> --%>
 <%-- 						</frm:select> --%>
 						<frm:select id="EventoDDL" path="evento.idEvento">
-							<frm:option value="">Evento</frm:option>
+							<frm:option value="0">Evento</frm:option>
 						</frm:select>
 					</td>
 				</tr>
