@@ -16,6 +16,28 @@
     <script src="${jqueryJs}"></script>
     <script src="${mainJs}"></script>
 </head>
+<c:url var="findEventosURL" value="/eventos" />
+<script type="text/javascript">
+$(document).ready(function() { 
+	$('#TorneoDDL').change(
+		function() {
+			$.getJSON('${findEventosURL}', {
+				idTorneos : $(this).val(),
+				ajax : 'true'
+			}, function(data) {
+				var html = '<option value="">Seleccione Evento...</option>';
+				var len = data.length;
+				for ( var i = 0; i < len; i++) {
+					html += '<option value="' + data[i].name + '">'
+							+ data[i].name + '</option>';
+				}
+				html += '</option>';
+ 
+				$('#EventoDDL').html(html);
+			});
+		});
+});
+</script>
 <body>
 <div class="cont">
 <div id="main">
@@ -52,18 +74,23 @@
 </c:choose>
 <frm:form name="inscripto" action="Inscribir.html" method="post">
 <form:hidden path="arbitro.idArbitro" value="${idArbitro}"/>
+<form:hidden path="idCat" value="${idCategoria}"/>
 <table>
 				 <tr>
 					<td align="left">Torneo</td>
-					<td><frm:select path="evento.torneo.idTorneo">
+					<td><frm:select id="TorneoDDL" path="evento.torneo.idTorneo">
 						<frm:options items="${TorneoList}" itemLabel="nombre" itemValue="idTorneo"/>
 						</frm:select>
 					</td>
 				</tr>
 				<tr>
 					<td align="left">Evento</td>
-					<td><frm:select path="evento.idEvento">
-						<frm:options items="${EventoList}"  itemLabel="nombre" itemValue="idEvento"/>
+					<td>
+<%-- 					<frm:select id="EventoDDL" path="evento.idEvento"> --%>
+<%-- 						<frm:options items="${EventoList}"  itemLabel="nombre" itemValue="idEvento"/> --%>
+<%-- 						</frm:select> --%>
+						<frm:select id="EventoDDL" path="evento.idEvento">
+							<frm:option value="">Evento</frm:option>
 						</frm:select>
 					</td>
 				</tr>
@@ -74,8 +101,16 @@
 						<option value=1>Poseo Vehiculo-Puedo llevar gente</option>
 						<option value=0>Viajo por mis propios medios</option>
 					</frm:select></td>
+			    </tr>
 			    <tr>
-			    	<td> <input type="submit" value="Aceptar" onclick="validate()"> </td>
+					<td align="left">Desea ser Arbitro Mayor</td>
+					<td><frm:select name="mayor" class="form-control" style="width: 175px;" path="mayor">
+						<option selected="selected" value="N">No</option>
+						<option value="Y">SI</option>
+					</frm:select></td>
+			    </tr>
+			    <tr>
+			    	<td> <input type="submit" value="Aceptar"> </td>
 			        <td> <input type="reset" value="Limpiar"> </td>
 <!-- 			        <td> <input type="button" value="Cancelar"  onclick="javascript:history.go(-1)"> </td> -->
 			    </tr>

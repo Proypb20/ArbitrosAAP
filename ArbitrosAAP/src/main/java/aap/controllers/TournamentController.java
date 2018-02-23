@@ -11,6 +11,8 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -94,11 +96,11 @@ public class TournamentController {
 		torneo1.setNombre("Seleccione Torneo");
 		torneo.add(0,torneo1);
 		MV.addObject("TorneoList", torneo);
-		List<Eventos> evento = service.obtenerEventos();
-		Eventos evento1 = new Eventos();
-		evento1.setNombre("Seleccione Evento");
-		evento.add(0,evento1);
-		MV.addObject("EventoList", evento);
+//		List<Eventos> evento = service.obtenerEventos();
+//		Eventos evento1 = new Eventos();
+//		evento1.setNombre("Seleccione Evento");
+//		evento.add(0,evento1);
+//		MV.addObject("EventoList", evento);
 		Usuarios user1 = new Usuarios();
 		user1 = service.obtenerUsuario((Integer) session.getAttribute("IdU"));
 		MV.addObject("idArbitro",user1.getArbitro().getIdArbitro());
@@ -106,6 +108,14 @@ public class TournamentController {
 		MV.setViewName("inscripcion");
 		}
 		return MV;
+	}
+	
+	@RequestMapping(value = "/eventos", method = RequestMethod.GET)
+	public @ResponseBody
+	List<Eventos> eventosT(
+			@RequestParam(value = "idTorneos", required = true) Integer idTorneos) {
+		List<Eventos> evento = service.obtenerEventosT(idTorneos);
+		return evento;
 	}
 
 	@RequestMapping(value ="Inscribir.html" , method= {RequestMethod.POST})

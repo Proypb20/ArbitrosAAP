@@ -35,6 +35,8 @@ public interface Service {
 	
 	ArrayList<Eventos> obtenerEventos();
 	
+	ArrayList<Eventos> obtenerEventosT(Integer idTorneo);
+	
 	Eventos obtenerEvento(Integer idEvento);
 	
 	void insertarEvento(Eventos evento);

@@ -55,9 +55,11 @@
 		<table>
 			<tr>
 				<td align="left">Presupuesto</td>
-				<td><frm:select path="idPresupuesto">
-						<frm:options items="${PresupuestoList}" itemLabel="arbitro.usuario.usuario" itemValue="idPresupuesto"/>
-					</frm:select></td>
+				<td>
+				<frm:select path="idPresupuesto">
+				  <frm:options items="${PresupuestoList}" itemLabel="evento.nombre" itemValue="idPresupuesto"/>
+				</frm:select>
+			     </td>
 			</tr>
 			<tr>
 				<td><input type="submit" value="Eliminar" name="btnguardar">

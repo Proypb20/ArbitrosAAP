@@ -64,6 +64,7 @@ function mostrararb()
 	        document.getElementById('nroarb').style.visibility = 'visible';
 	    } else {
 	        document.getElementById('nroarb').style.visibility = 'hidden';
+	        document.getElementById('nroarb').value = "";
 	    }
 }
 function onloadarb()

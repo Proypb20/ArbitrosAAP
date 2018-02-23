@@ -71,6 +71,11 @@ public class ServiceBasico implements Service {
 	public ArrayList<Eventos> obtenerEventos() {
 		return this.dataAccess.obtenerEventos();
 	}
+	
+	@Override
+	public ArrayList<Eventos> obtenerEventosT(Integer idTorneo) {
+		return this.dataAccess.obtenerEventosT(idTorneo);
+	}
 
 	@Override
 	public Eventos obtenerEvento(Integer idEvento) {

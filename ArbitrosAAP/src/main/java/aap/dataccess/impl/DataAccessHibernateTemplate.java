@@ -102,6 +102,15 @@ public class DataAccessHibernateTemplate implements DataAccess {
 		return (ArrayList<Eventos>) this.hibernateTemplate.loadAll(Eventos.class);
 	}
 	
+	@SuppressWarnings("unchecked")
+	@Transactional(propagation=Propagation.REQUIRED, readOnly=true)
+	public ArrayList<Eventos> obtenerEventosT(Integer idTorneo) {
+//		return (ArrayList<Eventos>) this.hibernateTemplate.get(Eventos.class,idTorneo);
+		DetachedCriteria criteria = DetachedCriteria.forClass(Eventos.class);
+		criteria.add(Restrictions.eq("torneo.idTorneo", idTorneo));
+		return (ArrayList<Eventos>) this.hibernateTemplate.findByCriteria(criteria);
+	}
+	
 	@Transactional(propagation=Propagation.REQUIRED, readOnly=true)
 	public Eventos obtenerEvento(Integer idEvento) {
 		return this.hibernateTemplate.get(Eventos.class,idEvento);

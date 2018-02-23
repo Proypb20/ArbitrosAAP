@@ -30,6 +30,8 @@ public interface DataAccess {
 	
 	ArrayList<Eventos> obtenerEventos();
 	
+	ArrayList<Eventos> obtenerEventosT(Integer idTorneo);
+	
 	Eventos obtenerEvento(Integer idEvento);
 	
 	void insertarEvento(Eventos evento);

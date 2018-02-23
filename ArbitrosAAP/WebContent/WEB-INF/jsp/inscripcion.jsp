@@ -16,6 +16,28 @@
     <script src="${jqueryJs}"></script>
     <script src="${mainJs}"></script>
 </head>
+<c:url var="findEventosURL" value="/eventos" />
+<script type="text/javascript">
+$(document).ready(function() { 
+	$('#TorneoDDL').change(
+		function() {
+			$.getJSON('${findEventosURL}', {
+				idTorneos : $(this).val(),
+				ajax : 'true'
+			}, function(data) {
+				var html = '<option value="0">Seleccione Evento...</option>';
+				var len = data.length;
+				for ( var i = 0; i < len; i++) {
+					html += '<option value="' + data[i].idEvento + '">'
+							+ data[i].nombre + '</option>';
+				}
+				html += '</option>';
+ 
+				$('#EventoDDL').html(html);
+			});
+		});
+});
+</script>
 <body>
 <div class="cont">
 <div id="main">
@@ -56,15 +78,19 @@
 <table>
 				 <tr>
 					<td align="left">Torneo</td>
-					<td><frm:select path="evento.torneo.idTorneo">
+					<td><frm:select id="TorneoDDL" path="evento.torneo.idTorneo">
 						<frm:options items="${TorneoList}" itemLabel="nombre" itemValue="idTorneo"/>
 						</frm:select>
 					</td>
 				</tr>
 				<tr>
 					<td align="left">Evento</td>
-					<td><frm:select path="evento.idEvento">
-						<frm:options items="${EventoList}"  itemLabel="nombre" itemValue="idEvento"/>
+					<td>
+<%-- 					<frm:select id="EventoDDL" path="evento.idEvento"> --%>
+<%-- 						<frm:options items="${EventoList}"  itemLabel="nombre" itemValue="idEvento"/> --%>
+<%-- 						</frm:select> --%>
+						<frm:select id="EventoDDL" path="evento.idEvento">
+							<frm:option value="">Evento</frm:option>
 						</frm:select>
 					</td>
 				</tr>
