@@ -77,7 +77,8 @@ public class TournamentController {
 		MV.addObject("Mensaje", "Evento Guardado Exitosamente");
 		return MV;
 	}
-	@RequestMapping("Inscribirse.html")
+	
+	@RequestMapping(value ="Inscribirse.html")
 	public ModelAndView redireccionins(HttpServletRequest request){
 		ModelAndView MV = new ModelAndView();
 		HttpSession session = request.getSession();
@@ -96,11 +97,11 @@ public class TournamentController {
 		torneo1.setNombre("Seleccione Torneo");
 		torneo.add(0,torneo1);
 		MV.addObject("TorneoList", torneo);
-//		List<Eventos> evento = service.obtenerEventos();
-//		Eventos evento1 = new Eventos();
-//		evento1.setNombre("Seleccione Evento");
-//		evento.add(0,evento1);
-//		MV.addObject("EventoList", evento);
+		List<Eventos> evento = service.obtenerEventos();
+		Eventos evento1 = new Eventos();
+		evento1.setNombre("Seleccione Evento");
+		evento.add(0,evento1);
+		MV.addObject("EventoList", evento);
 		Usuarios user1 = new Usuarios();
 		user1 = service.obtenerUsuario((Integer) session.getAttribute("IdU"));
 		MV.addObject("idArbitro",user1.getArbitro().getIdArbitro());
@@ -110,11 +111,10 @@ public class TournamentController {
 		return MV;
 	}
 	
-	@RequestMapping(value = "/eventos", method = RequestMethod.GET)
-	public @ResponseBody
-	List<Eventos> eventosT(
-			@RequestParam(value = "idTorneos", required = true) Integer idTorneos) {
-		List<Eventos> evento = service.obtenerEventosT(idTorneos);
+	@RequestMapping(value ="EventosTor.html" , method= {RequestMethod.GET})
+	public @ResponseBody List<Eventos> eventosT(
+			@RequestParam(value = "idTorneos", required = false) String idTorneos) {
+		List<Eventos> evento = service.obtenerEventosT(Integer.parseInt(idTorneos));
 		return evento;
 	}
 
@@ -210,5 +210,16 @@ public class TournamentController {
 		MV.addObject("Mensaje", "Presupuesto Modificado correctamente"); 
 		MV.setViewName("inicio");
 		return MV;
+	}
+	
+	@RequestMapping(value = "MostrarEventos.html")
+	public ModelAndView Listareventos()
+	{
+		ModelAndView MV = new ModelAndView();
+		MV.addObject("command",new Eventos());
+		List<Eventos> evento = service.obtenerEventos(); 
+	    MV.addObject("EventosList", evento); 
+	    MV.setViewName("mostrareventos");
+	    return MV;
 	}
 }

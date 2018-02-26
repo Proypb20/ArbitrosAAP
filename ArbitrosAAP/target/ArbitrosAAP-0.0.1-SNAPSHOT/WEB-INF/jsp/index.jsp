@@ -21,8 +21,7 @@
          			<a href="http://www.aapaintball.com.ar/" id="logo"><img src="http://www.aapaintball.com.ar/wp-content/uploads/2011/07/logo-aap-paintball-2016-1.png" alt="Asociación Argentina de Paintball" title="Sitio Oficial de AAP"></a>
                 </div>
 				<div class="clear"></div>
-				<div id="widget-header">
-				</div><!--#widget-header-->
+				<div id="widget-header"> </div><!--#widget-header-->
 				<div class="clear"></div>
 				<div class="row-top">
 			    <div class="clear"></div>
@@ -32,13 +31,12 @@
 					<table>
 	  				<tr> 
 	  					<td> Usuario:</td>
-	  					<td> <frm:input id="usuario" class="input" type="text" path="usuario"/> </td>
+	  					<td> <frm:input name="usuario" id="usuario" class="input" type="text" path="usuario"/> </td>
 	  				</tr>
 	  				<tr>
 	  					<td> Contraseña: </td>
-	  					<td> <frm:input id="password" class="input" path="contrasena" type="password"/> </td>
-	       			</tr>
-	       			<tr> </tr>
+	  					<td> <frm:input name="password" id="password" class="input" path="contrasena" type="password" /> </td>
+	       			</tr>	       			
 	  				<tr>
 	       				<td> <input type="submit" name="btnAceptar" value="Aceptar"> </td>
 	  				</tr>

@@ -16,45 +16,21 @@
     <script src="${jqueryJs}"></script>
     <script src="${mainJs}"></script>
 </head>
-<c:url var="findEventosURL" value="/eventos" />
 <script type="text/javascript">
 $(document).ready(function() { 
-	$('#TorneoDDL').change(
-		function() {
-// 			$.getJSON('${findEventosURL}', {
-// 				idTorneos : $(this).val(),
-// 				ajax : 'true'
-// 			}, function(data) {
-// 				alert(data[0].idEvento);
-// // 				var html = '<option value="0">Seleccione Evento...</option>';
-// // 				html += '<option value="' + data[0].idEvento + '">'
-// // 					+ data[0].nombre + '</option>';
-// // 				var len = data.length;
-// // 				var len = 10;
-// // 				for ( var i = 0; i < len; i++) {
-// //  					html += '<option value="' + data[i].idEvento + '">'
-// //  							+ data[i].nombre + '</option>';
-// // 				}
-// //  				html += '</option>';
-// 				//$('#EventoDDL').html(html);
-// 			});
-			$.ajax({    
-				   url: '${findEventosURL}',
-				   type: 'POST',
-				   dataType: 'json',
-				   data: JSON.stringify(json),
-				   contentType: 'application/json; charset=utf-8',
-				   success: function (data) {
-					 var html = '<option value="0">Seleccione Evento...</option>';
-				     for (var i in data){
-				    	 html += '<option value="' + data[i].idEvento + '">'
-				    	  							+ data[i].nombre + '</option>';
-				    	 				}
-// 				    	  				html += '</option>';
-				   }
-				   });
-		})
-});
+	$("select#TorneoDDL").change(function()
+	    {
+		$.getJSON("EventosTor.html", {idTorneos :  $("select#TorneoDDL").val()}
+        , function(j){
+				         var options = '';
+				         for (var i = 0; i < j.length; i++) 
+				         {
+				             options += '<option value="' + j[i].idEvento + '">' + j[i].nombre + '</option>';
+				         }
+				         $("select#EventoDDL").html(options);
+				       });
+        })
+	});
 </script>
 <body>
 <div class="cont">
@@ -96,7 +72,7 @@ $(document).ready(function() {
 <table>
 				 <tr>
 					<td align="left">Torneo</td>
-					<td><frm:select id="TorneoDDL" path="evento.torneo.idTorneo">
+					<td><frm:select id="TorneoDDL" name="TorneoDDL" path="evento.torneo.idTorneo">
 						<frm:options items="${TorneoList}" itemLabel="nombre" itemValue="idTorneo"/>
 						</frm:select>
 					</td>
@@ -104,11 +80,8 @@ $(document).ready(function() {
 				<tr>
 					<td align="left">Evento</td>
 					<td>
-<%-- 					<frm:select id="EventoDDL" path="evento.idEvento"> --%>
-<%-- 						<frm:options items="${EventoList}"  itemLabel="nombre" itemValue="idEvento"/> --%>
-<%-- 						</frm:select> --%>
-						<frm:select id="EventoDDL" path="evento.idEvento">
-							<frm:option value="0">Evento</frm:option>
+						<frm:select id="EventoDDL" name="EventoDDL" class="form-control" style="width: 175px;" path="evento.idEvento">
+<%--      						<frm:options items="${EventoList}"  itemLabel="nombre" itemValue="idEvento"/> --%>
 						</frm:select>
 					</td>
 				</tr>

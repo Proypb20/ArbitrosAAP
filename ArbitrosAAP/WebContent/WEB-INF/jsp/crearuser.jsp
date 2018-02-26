@@ -124,7 +124,7 @@ function onloadarb()
 					<td><frm:input name="username" id="username" class="input" value="" size="25" type="text" path="usuario"/></td>
 				</tr>
 				<tr>
-					<td align="left">ContraseÃ±a</td>
+					<td align="left">Contraseña</td>
 					<td><frm:input name="password" id="contrasena" class="input" value="" size="25" type="password" path="contrasena"/></td>
 			    </tr>
 			    <tr>
@@ -148,6 +148,7 @@ function onloadarb()
 				</tr>
 				<tr>
 					<td align="left">Numero de Documento</td>
+<%-- 					<td><frm:input name="nrodoc" id="nrodoc" class="input" value="" size="25" type="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57' path="nroDocumento"/></td> --%>
 					<td><frm:input name="nrodoc" id="nrodoc" class="input" value="" size="25" type="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57' path="nroDocumento"/></td>
 				</tr>
 				<tr>

@@ -9,34 +9,28 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Asociacion Argentina de Paintball | Sitio Oficial de AAP | Inscripcion</title>
 <spring:url value="/resources/css/main.css" var="mainCss" />
-	<spring:url value="/resources/js/jquery.1.10.2.min.js" var="jqueryJs" />
+	<spring:url value="/resources/theme/js/jquery.1.10.2.min.js" var="jqueryJs" />
 	<spring:url value="/resources/js/main.js" var="mainJs" />
 
 	<link href="${mainCss}" rel="stylesheet"  type="text/css"/>
     <script src="${jqueryJs}"></script>
     <script src="${mainJs}"></script>
 </head>
-<c:url var="findEventosURL" value="/eventos" />
 <script type="text/javascript">
 $(document).ready(function() { 
-	$('#TorneoDDL').change(
-		function() {
-			$.getJSON('${findEventosURL}', {
-				idTorneos : $(this).val(),
-				ajax : 'true'
-			}, function(data) {
-				var html = '<option value="">Seleccione Evento...</option>';
-				var len = data.length;
-				for ( var i = 0; i < len; i++) {
-					html += '<option value="' + data[i].name + '">'
-							+ data[i].name + '</option>';
-				}
-				html += '</option>';
- 
-				$('#EventoDDL').html(html);
-			});
-		});
-});
+	$("select#TorneoDDL").change(function()
+	    {
+		$.getJSON("EventosTor.html", {idTorneos :  $("select#TorneoDDL").val()}
+        , function(j){
+				         var options = '';
+				         for (var i = 0; i < j.length; i++) 
+				         {
+				             options += '<option value="' + j[i].idEvento + '">' + j[i].nombre + '</option>';
+				         }
+				         $("select#EventoDDL").html(options);
+				       });
+        })
+	});
 </script>
 <body>
 <div class="cont">
@@ -78,7 +72,7 @@ $(document).ready(function() {
 <table>
 				 <tr>
 					<td align="left">Torneo</td>
-					<td><frm:select id="TorneoDDL" path="evento.torneo.idTorneo">
+					<td><frm:select id="TorneoDDL" name="TorneoDDL" path="evento.torneo.idTorneo">
 						<frm:options items="${TorneoList}" itemLabel="nombre" itemValue="idTorneo"/>
 						</frm:select>
 					</td>
@@ -86,11 +80,8 @@ $(document).ready(function() {
 				<tr>
 					<td align="left">Evento</td>
 					<td>
-<%-- 					<frm:select id="EventoDDL" path="evento.idEvento"> --%>
-<%-- 						<frm:options items="${EventoList}"  itemLabel="nombre" itemValue="idEvento"/> --%>
-<%-- 						</frm:select> --%>
-						<frm:select id="EventoDDL" path="evento.idEvento">
-							<frm:option value="">Evento</frm:option>
+						<frm:select id="EventoDDL" name="EventoDDL" class="form-control" style="width: 175px;" path="evento.idEvento">
+<%--      						<frm:options items="${EventoList}"  itemLabel="nombre" itemValue="idEvento"/> --%>
 						</frm:select>
 					</td>
 				</tr>
