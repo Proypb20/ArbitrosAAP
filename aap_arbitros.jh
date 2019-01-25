@@ -1,0 +1,106 @@
+
+enum Paises {
+	ARGENTINA, ECUADOR, BRASIL, URUGUAY, CHILE, PARAGUAY
+}
+
+enum Provincias {
+	BUENOS_AIRES, MENDOZA, CAPITAL_FEDERAL, SANTA_FE, CORDOBA, TUCUMAN
+}
+
+entity TiposUsuarios {
+	nombre String required,
+    descripcion String
+}
+
+entity Alimentaciones {
+	nombre String required,
+    descripcion String
+}
+
+entity Categorias {
+	nombre String required,
+    honorarios Long
+}
+
+entity Arbitros {
+	nroArbitro String,
+    fechaAlta LocalDate,
+}
+
+entity Arbitrajes{
+ estado String
+}
+
+entity Articulos{
+descripcion String,
+fechaAlta LocalDate
+}
+
+entity Stocks{
+cantidad Long,
+fechaMov LocalDate
+}
+
+relationship OneToOne {
+	Arbitros{categoria} to Categorias,
+    Arbitros{persona} to Personas,
+    Personas{alimentacion} to Alimentaciones,
+    Fechas{sede} to Sedes,
+    Sedes{persona} to Personas
+}
+
+relationship ManyToOne {
+    Fechas{torneo} to Torneos,
+    Domicilios{persona} to Personas,
+    Arbitrajes{fecha} to Fechas,
+    Arbitrajes{arbitro} to Arbitros,
+    Arbitrajes{categoria} to Categorias,
+    Stocks{articulo} to Articulos
+}
+
+relationship OneToMany {
+    Personas{tipoUsuario} to TiposUsuarios
+}
+// an ignored comment
+/** not an ignored comment */
+entity Domicilios {
+	calle String,
+	numero String,
+	localidad String,
+    codPos String,
+    provincia Provincias,
+    pais Paises
+}
+
+entity Sedes{
+nombre String,
+descripcion String,
+}
+
+entity Torneos{
+anio String,
+descripcion String
+}
+
+entity Fechas{
+nroFecha Long,
+descripcion String,
+estado String
+}
+
+enum TipoDocs{
+	DNI, LE, CE
+}
+
+entity Personas {
+	/**
+	* The firstname attribute.
+	*/
+	nombre String,
+	apellido String,
+	email String,
+	telefono String,
+	fechaNac LocalDate,
+    tipoDoc TipoDocs,
+	nroDoc String
+}
